@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angu
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Subscription } from 'rxjs/Subscription';
 
-import { UIService } from '@shared';
+import { UIModalService } from '@ui';
 
 /** Sample Usage:
 <launch-modal [isButton]="false" classes="btn btn-icon" modal="LoanDetailsModalComponent" size="lg" [data]="someData" [dataAlt]="someData"
@@ -48,7 +48,7 @@ export class LaunchModalComponent implements OnInit, OnDestroy {
 
 	constructor(
 		private modalService: NgbModal,
-		private ui: UIService
+		private modals: UIModalService
 	) {
 	}
 
@@ -69,7 +69,7 @@ export class LaunchModalComponent implements OnInit, OnDestroy {
 			this.windowClass += ' modal-full';
 		}
 
-		let modal = this.ui.modals.open(<any>this.modal, this.persist, this.size, this.data, this.dataAlt);
+		let modal = this.modals.open(<any>this.modal, this.persist, this.size, this.data, this.dataAlt);
         // If static modal
 		if (modal) {
 			modal.result.then(
@@ -78,7 +78,7 @@ export class LaunchModalComponent implements OnInit, OnDestroy {
 		}
         // If observable modal. KNOWN BUG: If the page is refreshed and the app is dependent on an onSuccess method, that method will not be persisted
 		else {
-			this.sub = this.ui.modals.modalRef$.subscribe(modal => {
+			this.sub = this.modals.modalRef$.subscribe(modal => {
 				if (modal){
 				    modal.result.then(
 					    reason => this.onSuccess.emit(reason),

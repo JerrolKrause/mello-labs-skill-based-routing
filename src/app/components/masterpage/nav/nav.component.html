@@ -8,9 +8,13 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard </a>
+					<i class="fa fa-sliders" aria-hidden="true"></i> Distribution Roles </a>
             </li>
-           
+			<li class="nav-item">
+				<a class="nav-link" [routerLink]="['/loan-assignment']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+					<i class="fa fa-external-link-square" aria-hidden="true"></i> Loan Assignment
+				</a>
+			</li>
         </ul>
         <div ngbDropdown class="form-inline my-2 my-lg-0">
             <a ngbDropdownToggle data-qa="mp-dropdown">

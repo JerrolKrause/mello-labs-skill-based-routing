@@ -3,23 +3,21 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { Store } from '@ngrx/store';
 
-import { IStore } from 'src/app/shared/stores/store';
-import { StoreActionsUi } from 'src/app/shared/stores/ui/ui.actions';
-import { AppSettings } from 'src/app/shared/app.settings';
-import { ApiService } from 'src/app/shared/api.service';
+import { IStore, AppSettings } from '@shared';
+import { ApiService } from '@api';
+import { UIStoreActions } from '@ui';
 
-import { ConfirmationModalComponent } from 'src/app/components/modals/confirmation/confirmation-modal.component';
-import { LogoutModalComponent } from 'src/app/components/modals/logout/logout-modal.component';
+import { ConfirmationModalComponent, LoanAssignModalComponent, LogoutModalComponent, UserAddModalComponent } from '@modals';
 
 /** Sample Usage: 
-this.ui.modals.open('ConfirmationModalComponent', false, 'lg', 'Are you sure you want to delete this user?', 'Delete User').result.then(
+this.modals.open('ConfirmationModalComponent', false, 'lg', 'Are you sure you want to delete this user?', 'Delete User').result.then(
 	() => console.log('Modal Closed'),
 	() => console.log('Modal Dismissed'));
 */
 
 
 // List modals here by component name
-type modals = 'LogoutModalComponent' | 'ConfirmationModalComponent';
+type modals = 'LogoutModalComponent' | 'ConfirmationModalComponent' | 'UserAddModalComponent' | 'LoanAssignModalComponent';
 
 @Injectable()
 export class UIModalService {
@@ -31,7 +29,9 @@ export class UIModalService {
 	/** List of component references of available modals */
 	public modalList = {
 		ConfirmationModalComponent: ConfirmationModalComponent,
-		LogoutModalComponent: LogoutModalComponent
+		LogoutModalComponent: LogoutModalComponent,
+		UserAddModalComponent: UserAddModalComponent,
+		LoanAssignModalComponent: LoanAssignModalComponent
 	}
 
 	constructor(
@@ -79,7 +79,7 @@ export class UIModalService {
 		// If persist is set, load this modal into the store so state is managed by the UI store
 		if (persist) {
 			this.store.dispatch({
-				type: StoreActionsUi.MODAL_OPEN,
+				type: UIStoreActions.MODAL_OPEN,
 				payload: {
 					modalId: modalId,
 					options: { size: <any>size, windowClass: windowClass },
@@ -108,12 +108,12 @@ export class UIModalService {
 		this.modalRef$.subscribe(modal => {
 			// Wait for promise that is returned when modal is closed or dismissed
 			modal.result.then((closeReason) => {
-				this.store.dispatch({ type: StoreActionsUi.MODAL_UNLOAD, payload: null });
+				this.store.dispatch({ type: UIStoreActions.MODAL_UNLOAD, payload: null });
 				this.api.resetErrors();
 				this.api.resetSuccess();
 			}, (dismissReason) => {
 				// On modal dismiss, which is closed without performing an action
-				this.store.dispatch({ type: StoreActionsUi.MODAL_UNLOAD, payload: null });
+				this.store.dispatch({ type: UIStoreActions.MODAL_UNLOAD, payload: null });
 				this.api.resetErrors();
 				this.api.resetSuccess();
 			});

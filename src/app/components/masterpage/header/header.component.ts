@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'header-component',
+		selector: 'header-component',
   templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit {

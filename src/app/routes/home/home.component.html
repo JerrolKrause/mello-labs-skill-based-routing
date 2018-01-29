@@ -8,6 +8,22 @@
     </div>
 
     <api-state [state]="routeData?.state" [toaster]="true" [showSuccess]="false" *ngIf="routeData?.state">
+
+		<ngb-accordion #acc="ngbAccordion" class="accordion-sm" activeIds="ngb-panel-0" *ngIf="routeData?.users?.src?.length">
+		
+			<ngb-panel *ngFor="let user of routeData.users.src">
+				<ng-template ngbPanelTitle>
+					{{user.name}}
+				</ng-template>
+				<ng-template ngbPanelContent>
+					Hello World
+				</ng-template>
+			</ngb-panel>
+			
+		</ngb-accordion>
+
+
+	<!--
         <div class="row">
             <div class="col-12 col-lg-8 col-xl-9">
                 <div class="alert alert-warning icon" *ngIf="!routeData?.users?.src?.length">No users found</div>
@@ -24,7 +40,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr *ngFor="let user of routeData.users.src"><!-- Data from array is mapped, note the .src  -->
+                    <tr *ngFor="let user of routeData.users.src">
                         <td>{{user.username}}</td>
                         <td>{{user.name}}</td>
                         <td>{{user.website}}</td>
@@ -64,7 +80,7 @@
                 </div>
             </div>
 
-        </div>
+        </div>-->
     </api-state>
 
 </div>

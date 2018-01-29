@@ -1,5 +1,5 @@
 /** Reducer actions for the UI store */
-export enum StoreActionsUi {
+export enum UIStoreActions {
 	RESET = 'RESET',
 	REHYDRATE = 'REHYDRATE',
 	MODAL_OPEN = 'MODAL_OPEN',

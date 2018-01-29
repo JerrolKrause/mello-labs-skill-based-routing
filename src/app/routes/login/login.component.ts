@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
-import { AuthService, ApiService, UIService, AppSettings } from '@shared';
+import { AuthService,AppSettings } from '@shared';
+import { ApiService } from '@api';
+import { UIStoreService } from '@ui';
 
 @Component({
 	selector: 'login',
@@ -23,7 +25,7 @@ export class LoginComponent implements OnInit {
 		private router: Router,
 		private fb: FormBuilder,
 		private api: ApiService,
-		private ui: UIService,
+		private ui: UIStoreService,
 		private settings: AppSettings
 	) {
 	}

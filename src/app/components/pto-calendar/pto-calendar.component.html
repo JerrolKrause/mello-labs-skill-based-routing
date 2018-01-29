@@ -1,0 +1,78 @@
+<div class="p-3">
+
+	<div class="row">
+		<div class="col-6">
+			<ngb-datepicker #dp ngModel (ngModelChange)="onDateChange($event)" [displayMonths]="2" [dayTemplate]="t"></ngb-datepicker>
+		</div>
+		<div class="col-6">
+			<h3 class="title mb-3"><i aria-hidden="true" class="fa fa-files-o"></i> Requesting PTO</h3>
+			<table class="table">
+				<tbody>
+					<tr>
+						<td>Daily Hours:</td>
+						<td>
+							<input class="form-control" value="8" />
+						</td>
+					</tr>
+					<tr>
+						<td>From:</td>
+						<td>
+							<ng-container *ngIf="fromDate">
+								{{fromDate.year+'-'+fromDate.month+'-'+fromDate.day | date}}
+							</ng-container>
+						</td>
+					</tr>
+					<tr *ngIf="toDate">
+						<td>To:</td>
+						<td>
+							<ng-container *ngIf="toDate">
+								{{toDate.year+'-'+toDate.month+'-'+toDate.day | date}}
+							</ng-container>
+						</td>
+					</tr>
+					<tr *ngIf="!toDate">
+						<td>To:</td>
+						<td>
+							<ng-container *ngIf="fromDate">
+								{{fromDate.year+'-'+fromDate.month+'-'+fromDate.day | date}}
+							</ng-container>
+						</td>
+					</tr>
+					<!--
+					<tr>
+						<td>Total Days</td>
+						<td *ngIf="toDate">{{toDate.day - fromDate.day}}</td>
+						<td *ngIf="!toDate">1</td>
+					</tr>
+					-->
+					<tr>
+						<td></td>
+						<td>
+							<button class="btn btn-primary"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i> Add PTO</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<!--
+			<pre>From: {{ fromDate | json }} </pre>
+			<pre>To: {{ toDate | json }} </pre>
+			-->
+		</div>
+	</div>
+
+
+
+
+</div>
+
+
+<ng-template #t let-date="date" let-focused="focused">
+	<span class="custom-day"
+		  [class.focused]="focused"
+		  [class.range]="isFrom(date) || isTo(date) || isInside(date) || isHovered(date)"
+		  [class.faded]="isHovered(date) || isInside(date)"
+		  (mouseenter)="hoveredDate = date"
+		  (mouseleave)="hoveredDate = null">
+		{{ date.day }}
+	</span>
+</ng-template>

@@ -6,9 +6,9 @@ import { Store } from '@ngrx/store';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/interval';
 
-import { IStore } from 'src/app/shared';
-import { AppSettings } from 'src/app/shared/app.settings';
-import { UIService } from 'src/app/shared/ui.service';
+import { UIStoreService, UIModalService } from '@ui';
+import { IStore } from './store';
+import { AppSettings } from './app.settings';
 
 @Injectable()
 export class AuthService {
@@ -37,7 +37,8 @@ export class AuthService {
 		private route: ActivatedRoute,
 		private store: Store<IStore.root>,
 		private settings: AppSettings,
-		private ui: UIService
+		private ui: UIStoreService,
+		private modals: UIModalService
 	) {
 		// If token is passed in via query param, update settings. Standard query param: /#/?token=123456
         this.route.queryParams.subscribe(queryParams => {
@@ -124,7 +125,7 @@ export class AuthService {
     private launchLogoutModal(): void {
 		clearTimeout(this.sessionTimer);
         // Open log out modal window
-		this.ui.modals.open('LogoutModalComponent', false, 'lg', this.modalDuration).result.then((closeReason) => {
+		this.modals.open('LogoutModalComponent', false, 'lg', this.modalDuration).result.then((closeReason) => {
 			this.logOut();
 		}, (dismissReason) => {// When modal is dismissed
 			if (dismissReason != 'norefresh') {

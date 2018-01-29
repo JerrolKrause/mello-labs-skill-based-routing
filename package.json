@@ -24,6 +24,7 @@
     "@angular/router": "^5.2.0",
     "@angular/service-worker": "^5.2.1",
     "@mello-labs/api-tools": "^0.1.8",
+    "@mello-labs/datagrid": "^0.1.25",
     "@mello-labs/form-tools": "^0.1.17",
     "@mello-labs/ui": "^0.1.8",
     "@mello-labs/utilities": "^0.1.9",

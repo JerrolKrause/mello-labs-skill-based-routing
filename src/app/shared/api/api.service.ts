@@ -6,29 +6,36 @@ import { ApiHttpService, ApiActions } from '@mello-labs/api-tools';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/throw';
 
-import { IStore } from 'src/app/shared/stores/store';
-import { ApiMap } from 'src/app/shared/stores/api/api.map';
-import { AppSettings } from 'src/app/shared/app.settings';
-import { ApiSelectors } from 'src/app/shared/stores/api/api.selectors';
+import { IStore, AppSettings } from '@shared';
+import { ApiProps } from './api.properties';
+import { ApiMap } from './api.map';
 
 @Injectable()
 export class ApiService extends ApiHttpService {
 
+	public users$ = this.store.select(store => store.api.users);
+	public loans$ = this.store.select(store => store.api.loans);
+
+	/** Get the API state using api props */
+	public getState$ = (apiProp: ApiProps) => this.store.select(store => store.apiStatus[apiProp]);
+	/** Get the API data using api props */
+	public getData$ = (apiProp: ApiProps) => this.store.select(store => store.api[apiProp]);
+
+
 	/** Location of prod app environment settings */
 	public envSettingsUrlProd = '/api/config'; // Localize
 	/** Location of dev app environment settings */
-	public envSettingsUrlDev = '/assets/mock-data/env-settings.json';
+	public envSettingsUrlDev = './assets/mock-data/env-settings.json';
 
 	constructor(
 		private http: HttpClient,
 		private store: Store<IStore.root>,
 		private router: Router,
-		public select: ApiSelectors,
 		private settings: AppSettings
 	) {
 		super(http, store, router);
 		// On instantiation, load environment settings
-		this.appSettingsGet().subscribe(settings => this.appSettingsUpdate(settings));
+		this.appSettingsGet().subscribe(settings => this.appSettingsUpdate(settings), error => console.error('Unable to get env settings', error));
 	}
 
 	/** Sample store usage */
@@ -40,6 +47,10 @@ export class ApiService extends ApiHttpService {
 		delete: (user) => this.deleteStore(ApiMap.users.endpoint + '/' + user.id, ApiMap.users, user)
 	}
 
+	public loans = {
+		get: (update?: boolean) => this.getStore(ApiMap.loans.endpoint, ApiMap.loans, update),
+	}
+
 	/**
 	 * Set all env settings in app settings
 	 * @param settings
@@ -49,8 +60,8 @@ export class ApiService extends ApiHttpService {
 	}
 
 	/**
-	  * Get app and user settings needed by the API. This needs to happen before any subsequent calls
-	  */
+	* Get app and user settings needed by the API. This needs to happen before any subsequent calls
+	*/
 	public appSettingsGet(update?: boolean): Observable<any> {
 		// If app is localhost:4200, use local settings settings instead
 
