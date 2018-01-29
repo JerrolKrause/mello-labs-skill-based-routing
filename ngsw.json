@@ -1,0 +1,47 @@
+{
+  "configVersion": 1,
+  "index": "/mello-labs-skill-based-routing/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "/mello-labs-skill-based-routing/favicon.ico",
+        "/mello-labs-skill-based-routing/index.html",
+        "/mello-labs-skill-based-routing/inline.8653f1f18967e3bad555.bundle.js",
+        "/mello-labs-skill-based-routing/main.049a17e44af824a04d20.bundle.js",
+        "/mello-labs-skill-based-routing/polyfills.9afba58cc5c5e906563e.bundle.js",
+        "/mello-labs-skill-based-routing/styles.88f5aa83c53438a7c457.bundle.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "/mello-labs-skill-based-routing/assets/img/delegator-logo.png",
+        "/mello-labs-skill-based-routing/assets/mock-data/env-settings.json",
+        "/mello-labs-skill-based-routing/assets/mock-data/loan-assignment.json",
+        "/mello-labs-skill-based-routing/assets/mock-data/login.json",
+        "/mello-labs-skill-based-routing/assets/mock-data/users.json"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/mello-labs-skill-based-routing/inline.8653f1f18967e3bad555.bundle.js": "3ef5defb47d987726ac9dc63d92021bb8e61a9aa",
+    "/mello-labs-skill-based-routing/assets/img/delegator-logo.png": "8e75a63b723e39d3baf7d31cc604b605b87a39d9",
+    "/mello-labs-skill-based-routing/main.049a17e44af824a04d20.bundle.js": "1e679f30b862b50de177a3958ae401202ab8bb2b",
+    "/mello-labs-skill-based-routing/assets/mock-data/env-settings.json": "31bb9cb6c8bb16a4e728e95f9fcb6e4b84a6e67b",
+    "/mello-labs-skill-based-routing/polyfills.9afba58cc5c5e906563e.bundle.js": "ab0d2811797b2af594b591116f226ad278ffced6",
+    "/mello-labs-skill-based-routing/assets/mock-data/loan-assignment.json": "89a44bb2243d67d2c952860bb8a6ccbd814b9763",
+    "/mello-labs-skill-based-routing/styles.88f5aa83c53438a7c457.bundle.css": "42f61effd4b97ca5db43c9424e3ed634dbf56c29",
+    "/mello-labs-skill-based-routing/assets/mock-data/login.json": "4e4b0d718b64155c94706003eb8703fdc830c658",
+    "/mello-labs-skill-based-routing/favicon.ico": "928d35ef49194db2c926ac767ccbba09ee2ae6cb",
+    "/mello-labs-skill-based-routing/assets/mock-data/users.json": "b658a92bfd3d8423f5df9fc4c86844d9ffd9d6c0",
+    "/mello-labs-skill-based-routing/index.html": "7143fd3daa00b6510610321872cd6ec16d59e33f"
+  }
+}
