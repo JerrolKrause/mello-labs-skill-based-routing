@@ -2,5 +2,6 @@
 export enum ApiProps {
     // Example
 		users = 'users',
-		loans = 'loans'
+		loans = 'loans',
+		pods = 'pods'
 }

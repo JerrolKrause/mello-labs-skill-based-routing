@@ -4,7 +4,8 @@ import {
 		NoContentComponent,
 		LoginComponent,
 		UserAdminComponent,
-		LoanAssignmentComponent
+		LoanAssignmentComponent,
+		PodsComponent
 } from '@routes';
 
 import { LayoutMainComponent } from '@components';
@@ -23,6 +24,8 @@ export const ROUTES: Routes = [
 				path: '', component: LayoutMainComponent,
 				children: [
 						{ path: '', component: UserAdminComponent, data: { title: 'Distribution Roles' + titleSlug }, canActivate: [AuthGuard], },
+						{ path: 'pods', component: PodsComponent, data: { title: 'Pods' + titleSlug }, canActivate: [AuthGuard], },
+						{ path: 'users', component: HomeComponent, data: { title: 'Distribution Roles' + titleSlug }, canActivate: [AuthGuard], },
 						{ path: 'loan-assignment', component: LoanAssignmentComponent, data: { title: 'Loan Assignment' + titleSlug }, canActivate: [AuthGuard], },
 						{ path: '**', component: NoContentComponent, data: { title: 'Page Not Found' + titleSlug }, canActivate: [AuthGuard], },
 				]

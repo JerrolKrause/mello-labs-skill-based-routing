@@ -1,3 +1,21 @@
 // Include global application specific styling here
 
 #logo{display:block;background:url('/assets/img/delegator-logo.png') no-repeat top left;min-width:104px;height:45px;}
+
+.table{margin:0;color:#000;
+	th, td{font-weight:normal;font-size:0.9rem;border:0;
+		&.sm{font-size:0.7rem;}
+	}
+	.fa-check{font-size: 1.1rem;margin-left: 5px;}
+	.badge{min-width: 40px;}
+}
+
+.green{color:forestgreen;}
+ngb-accordion{
+	&.flex .card-header a{display:flex!important;}
+	.card-header{
+		& > a{
+			div{color:#000;}
+		}
+	}	
+}

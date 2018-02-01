@@ -80,7 +80,6 @@
 	<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0" class="accordion-md" *ngIf="loans$ | async as loans">
 		<ngb-panel *ngFor="let loan of loans">
 			<ng-template ngbPanelTitle>
-				<strong>Processed on {{loan.dateProcessed | date}}</strong>
 				<div class="float-right">
 					<span class="badge badge-warning" style="font-weight: normal;min-width:100px;" *ngIf="loan?.loansUnassigned?.length">
 						Unassigned: <strong>{{loan.loansUnassigned.length}}</strong>
@@ -89,6 +88,7 @@
 						Assigned: <strong>{{loan.loansAssigned.length}}</strong>
 					</span>
 				</div>
+				<strong>Processed on {{loan.dateProcessed | date}}</strong>
 			</ng-template>
 			<ng-template ngbPanelContent>
 				<div class="p-3">

@@ -18,7 +18,7 @@ export class UserAddModalComponent implements OnInit {
 		) { }
 
 		ngOnInit() {
-
+				console.log(this.data);
 		}
 
     /**

@@ -1,7 +1,7 @@
 <div id="user-admin" class="container-fluid" *ngIf="{ state: usersState$ | async, users: users$ | async } as routeData">
 
 	<div class="card mb-3">
-		<div class="card-header p-2">
+		<div class="card-header ">
 
 			<div class="float-right">
 				<!-- Add User -->
@@ -36,17 +36,135 @@
 
 	<api-state [state]="routeData?.state" [toaster]="true" [showSuccess]="false" *ngIf="routeData?.state">
 		<!-- Accordion  activeIds="ngb-panel-0"  -->
-		<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0" class="accordion-md" *ngIf="(users | filter: userSearchTerm:'name' | debounce) as usersFiltered">
+		<div style="padding: 0.4rem .75rem;" class="d-flex flex-row">
+
+		<table class="table table-sm" style="margin-left:14px;">
+			<thead>
+				<tr>
+					<td>User</td>
+					<td style="width:10%">Team Lead</td>
+					<td style="width:5%">Capacity</td>
+					<td class="sm" style="width:3%">NDC</td>
+					<td class="sm" style="width:5%">Non-NDC</td>
+					<td class="sm" style="width:3%">TBD</td>
+					<td class="sm" style="width:5%">Non-TBD</td>
+					<td class="sm" style="width:3%">MI</td>
+					<td class="sm" style="width:5%">Non-MI</td>
+					<td class="sm" style="width:5%">Purchase</td>
+					<td class="sm" style="width:5%">Refinance</td>
+					<td class="sm" style="width:4%">COOP</td>
+					<td class="sm" style="width:5%">Non-COOP</td>
+					<td class="sm" style="width:3%">TCF</td>
+					<td class="sm" style="width:5%">Non-TCF</td>
+					<td class="sm" style="width:4%">203K</td>
+					<td class="sm" style="width:5%">Non-203K</td>
+					<td class="sm" style="width:4%">CEMA</td>
+					<td class="sm" style="width:5%">Non-CEMA</td>
+				</tr>
+			</thead>
+		</table>
+		</div>
+		
+			<!-- activeIds="ngb-panel-0"-->
+		<ngb-accordion #acc="ngbAccordion" class="flex accordion-md" *ngIf="(users | filter: userSearchTerm:'name' | debounce) as usersFiltered">
 			<ngb-panel *ngFor="let user of usersFiltered">
 				<ng-template ngbPanelTitle>
-					<strong>{{user.name}}</strong>
-					<div class="float-right">
-						<span class="badge badge-default" style="font-weight: normal;min-width:130px;">Max Capacity: <strong>{{user.capacity}}</strong></span>
+					<table class="table table-sm">
+						<tbody>
+							<tr>
+								<td>{{user.name}}</td>
+								<td style="width:10%">Mark Hansen</td>
+								<td style="width:5%"><span class="badge badge-default">{{user.capacity}}</span></td>
+								<td class="sm" style="width:3%"><i class="fa fa-check green" *ngIf="user.rules.ndc" aria-hidden="true"></i></td>
+								<td class="sm" style="width:5%"><i class="fa fa-check green" *ngIf="user.rules.ndcNon" aria-hidden="true"></i></td>
+								<td class="sm" style="width:3%"><i class="fa fa-check green" *ngIf="user.rules.tbd" aria-hidden="true"></i></td>
+								<td class="sm" style="width:5%"><i class="fa fa-check green" *ngIf="user.rules.tbdNon" aria-hidden="true"></i></td>
+								<td class="sm" style="width:3%"><i class="fa fa-check green" *ngIf="user.rules.mi" aria-hidden="true"></i></td>
+								<td class="sm" style="width:5%"><i class="fa fa-check green" *ngIf="user.rules.miNon" aria-hidden="true"></i></td>
+								<td class="sm" style="width:5%"><i class="fa fa-check green" *ngIf="user.rules.purchase" aria-hidden="true"></i></td>
+								<td class="sm" style="width:5%"><i class="fa fa-check green" *ngIf="user.rules.refinance" aria-hidden="true"></i></td>
+								<td class="sm" style="width:4%"><i class="fa fa-check green" *ngIf="user.rules.coop" aria-hidden="true"></i></td>
+								<td class="sm" style="width:5%"><i class="fa fa-check green" *ngIf="user.rules.coopNon" aria-hidden="true"></i></td>
+								<td class="sm" style="width:3%"><i class="fa fa-check green" *ngIf="user.rules.tcf" aria-hidden="true"></i></td>
+								<td class="sm" style="width:5%"><i class="fa fa-check green" *ngIf="user.rules.tcfNon" aria-hidden="true"></i></td>
+								<td class="sm" style="width:4%"><i class="fa fa-check green" *ngIf="user.rules['203k']" aria-hidden="true"></i></td>
+								<td class="sm" style="width:5%"><i class="fa fa-check green" *ngIf="user.rules['203kNon']" aria-hidden="true"></i></td>
+								<td class="sm" style="width:4%"><i class="fa fa-check green" *ngIf="user.rules.cema" aria-hidden="true"></i></td>
+								<td class="sm" style="width:5%"><i class="fa fa-check green" *ngIf="user.rules.cemaNon" aria-hidden="true"></i></td>
+							</tr>
+						</tbody>
+					</table>
+
+				<!--
+
+					<div class="d-flex flex-row d-inline-block">
+						<div style="width:250px;">
+							{{user.name}}
+						</div>
+						<div style="width:200px;">
+							Mark Hansen
+						</div>
+						<div style="width:65px;">
+							8.25
+						</div>
+						<div style="width:35px;">
+							<i class="fa fa-check green" *ngIf="user.rules.ndc" aria-hidden="true"></i>
+						</div>
+						<div style="width:60px;">
+							<i class="fa fa-check green" *ngIf="user.rules.ndcNon" aria-hidden="true"></i>
+						</div>
+						<div style="width:35px;">
+							<i class="fa fa-check green" *ngIf="user.rules.tbd" aria-hidden="true"></i>
+						</div>
+						<div style="width:60px;">
+							<i class="fa fa-check green" *ngIf="user.rules.tbdNon" aria-hidden="true"></i>
+						</div>
+						<div style="width:25px;">
+							<i class="fa fa-check green" *ngIf="user.rules.mi" aria-hidden="true"></i>
+						</div>
+						<div style="width:50px;">
+							<i class="fa fa-check green" *ngIf="user.rules.miNon" aria-hidden="true"></i>
+						</div>
+						<div style="width:55px;">
+							<i class="fa fa-check green" *ngIf="user.rules.purchase" aria-hidden="true"></i>
+						</div>
+						<div style="width:60px;">
+							<i class="fa fa-check green" *ngIf="user.rules.refinance" aria-hidden="true"></i>
+						</div>
+						<div style="width:40px;">
+							<i class="fa fa-check green" *ngIf="user.rules.coop" aria-hidden="true"></i>
+						</div>
+						<div style="width:65px;">
+							<i class="fa fa-check green" *ngIf="user.rules.coopNon" aria-hidden="true"></i>
+						</div>
+						<div style="width:35px;">
+							<i class="fa fa-check green" *ngIf="user.rules.tcf" aria-hidden="true"></i>
+						</div>
+						<div style="width:60px;">
+							<i class="fa fa-check green" *ngIf="user.rules.tcfNon" aria-hidden="true"></i>
+						</div>
+						<div style="width:35px;">
+							<i class="fa fa-check green" *ngIf="user.rules['203k']" aria-hidden="true"></i>
+						</div>
+						<div style="width:60px;">
+							<i class="fa fa-check green" *ngIf="user.rules['203kNon']" aria-hidden="true"></i>
+						</div>
+						<div style="width:40px;">
+							<i class="fa fa-check green" *ngIf="user.rules.cema" aria-hidden="true"></i>
+						</div>
+						<div style="width:60px;">
+							<i class="fa fa-check green" *ngIf="user.rules.cemaNon" aria-hidden="true"></i>
+						</div>
 					</div>
+-->
+					<!--
+						{{user.name}}
+						<div class="float-right">
+							<span class="badge badge-default" style="font-weight: normal;min-width:130px;">Max Capacity: <strong>{{user.capacity}}</strong></span>
+						</div>-->
 				</ng-template>
 				<ng-template ngbPanelContent>
 					<div class="p-3">
-						<!-- User Tabs-->
 						<ngb-tabset>
 							<ngb-tab>
 								<ng-template ngbTabTitle><i aria-hidden="true" class="fa fa-cube"></i> Assignment Rules</ng-template>
@@ -57,7 +175,6 @@
 							<ngb-tab>
 								<ng-template ngbTabTitle><i class="fa fa-calendar" aria-hidden="true"></i> PTO Calendar</ng-template>
 								<ng-template ngbTabContent>
-									<!-- PTO Calendar-->
 									<pto-calendar></pto-calendar>
 								</ng-template>
 							</ngb-tab>

@@ -1,0 +1,163 @@
+[
+	{
+		"prop": "name",
+		"label": "Name",
+		"columnType": "string",
+		"canSort": true,
+		"canGroup": true,
+		"canFilter": true
+	},
+	{
+		"prop": "pod",
+		"label": "POD",
+		"columnType": "string",
+		"width": 70,
+		"canSort": true,
+		"canGroup": true,
+		"canFilter": true
+	},
+	{
+		"prop": "ndc",
+		"label": "NDC",
+		"columnType": "string",
+		"width": 70,
+		"canSort": true,
+		"canGroup": true,
+		"canFilter": true
+	},
+	{
+		"prop": "ndcNon",
+		"label": "Non-NDC",
+		"columnType": "string",
+		"width": 70,
+		"canSort": true,
+		"canGroup": true,
+		"canFilter": true
+	},
+	{
+		"prop": "tbd",
+		"label": "TBD",
+		"columnType": "string",
+		"width": 70,
+		"canSort": true,
+		"canGroup": true,
+		"canFilter": true
+	},
+	{
+		"prop": "tbdNon",
+		"label": "Non-TBD",
+		"columnType": "string",
+		"width": 70,
+		"canSort": true,
+		"canGroup": true,
+		"canFilter": true
+	},
+	{
+		"prop": "mi",
+		"label": "MI",
+		"columnType": "string",
+		"width": 70,
+		"canSort": true,
+		"canGroup": true,
+		"canFilter": true
+	},
+	{
+		"prop": "miNon",
+		"label": "Non-MI",
+		"columnType": "string",
+		"width": 70,
+		"canSort": true,
+		"canGroup": true,
+		"canFilter": true
+	},
+	{
+		"prop": "purchase",
+		"label": "Purchase",
+		"columnType": "string",
+		"width": 70,
+		"canSort": true,
+		"canGroup": true,
+		"canFilter": true
+	},
+	{
+		"prop": "refinance",
+		"label": "Refinance",
+		"columnType": "string",
+		"width": 70,
+		"canSort": true,
+		"canGroup": true,
+		"canFilter": true
+	},
+	{
+		"prop": "coop",
+		"label": "COOP",
+		"columnType": "string",
+		"width": 70,
+		"canSort": true,
+		"canGroup": true,
+		"canFilter": true
+	},
+	{
+		"prop": "coopNon",
+		"label": "Non-COOP",
+		"columnType": "string",
+		"width": 70,
+		"canSort": true,
+		"canGroup": true,
+		"canFilter": true
+	},
+	{
+		"prop": "tcf",
+		"label": "TCF",
+		"columnType": "string",
+		"width": 70,
+		"canSort": true,
+		"canGroup": true,
+		"canFilter": true
+	},
+	{
+		"prop": "tcfNon",
+		"label": "Non-TCF",
+		"columnType": "string",
+		"width": 70,
+		"canSort": true,
+		"canGroup": true,
+		"canFilter": true
+	},
+	{
+		"prop": "203K",
+		"label": "203K",
+		"columnType": "string",
+		"width": 70,
+		"canSort": true,
+		"canGroup": true,
+		"canFilter": true
+	},
+	{
+		"prop": "203KNon",
+		"label": "Non-203K",
+		"columnType": "string",
+		"width": 70,
+		"canSort": true,
+		"canGroup": true,
+		"canFilter": true
+	},
+	{
+		"prop": "cema",
+		"label": "CEMA",
+		"columnType": "string",
+		"width": 70,
+		"canSort": true,
+		"canGroup": true,
+		"canFilter": true
+	},
+	{
+		"prop": "cemaNon",
+		"label": "Non-CEMA",
+		"columnType": "string",
+		"width": 70,
+		"canSort": true,
+		"canGroup": true,
+		"canFilter": true
+	}
+]

@@ -27,6 +27,7 @@
 	},
 	"include": [
 		"src/**/*",
-		"node_modules/@mello-labs/form-tools/**/*"
+		"node_modules/@mello-labs/form-tools/**/*",
+		"node_modules/@mello-labs/datagrid/**/*"
 	]
 }

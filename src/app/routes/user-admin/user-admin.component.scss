@@ -4,8 +4,28 @@
 		.card-body.show{background: linear-gradient(to top, #c0c0c0 0%, #e9e9e9 100%);}
 		.card{background:#fff!important;border-radius: .35rem;}
 	}
-}
-ngb-tabset{
-	.nav-link{color: #5e9aca;}
-	 .tab-pane{background:#fff;}
+
+	.table{margin:0;color:#000;
+		th,td{font-weight:normal;font-size:0.9rem;border:0;
+			&.sm{font-size:0.7rem;}
+		}
+		.fa-check{font-size: 1.1rem;margin-left: 5px;}
+		.badge{min-width: 40px;}
+	}
+
+	.green{color:forestgreen;}
+	ngb-accordion{
+		.card-header{
+			& > a{display:flex!important;
+				div{color:#000;}
+			}
+		}
+		
+	}
+
+	ngb-tabset{
+		.nav-link{color: #5e9aca;}
+		 .tab-pane{background:#fff;}
+	}
+
 }

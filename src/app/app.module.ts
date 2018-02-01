@@ -28,7 +28,7 @@ enableProdMode();
 
 // Routes
 import {
-	NoContentComponent, LoginComponent, HomeComponent,
+		NoContentComponent, LoginComponent, HomeComponent, PodsComponent,
 	UserAdminComponent, LoanAssignmentComponent
 } from '@routes';
 
@@ -101,7 +101,7 @@ export const APP_PROVIDERS = [
 	declarations: [
 		AppComponent,
 		APP_COMPONENTS,
-		FilterPipe, DebouncePipe
+		FilterPipe, DebouncePipe, PodsComponent
 	],
 	imports: [
 		// Angular

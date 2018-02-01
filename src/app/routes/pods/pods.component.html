@@ -1,0 +1,133 @@
+<div id="pod-admin" class="container-fluid" *ngIf="{  users: users$ | async, usersState: usersState$ | async, podState: podsState$ | async, pods: pods$ | async } as routeData">
+
+	<div class="card mb-3">
+		<div class="card-header ">
+
+			<div class="float-right">
+				<!-- Add User -->
+				<launch-modal classes="btn btn-primary btn-sm mr-2" modal="UserAddModalComponent" size="xl">
+					<i class="fa fa-user-plus" aria-hidden="true"></i> Add User
+				</launch-modal>
+				<!-- Refresh users -->
+				<button class="btn btn-icon btn-sm mr-2" (click)="usersRefresh()" [disabled]="routeData?.state?.loading">
+					<i class="fa fa-refresh"></i>
+				</button>
+			</div>
+
+			<div class="btn-group">
+				<button class="btn btn-sm" [ngClass]="{'btn-primary' : view == 'pods', 'btn-secondary' : view != 'pods'}" (click)="view = 'pods'">Pods</button>
+				<button class="btn btn-sm" [ngClass]="{'btn-primary' : view == 'users', 'btn-secondary' : view != 'users'}" (click)="view = 'users'">Users</button>
+				<button class="btn btn-sm" [ngClass]="{'btn-primary' : view == 'products', 'btn-secondary' : view != 'products'}" (click)="view = 'products'">Products</button>
+			</div>
+
+			<!-- Filter datatable -->
+			<form class="form-inline mr-2 d-inline-block">
+				<label class="icon search" style="position:relative;">
+					<input class="form-control form-control-sm filterSearch" type="text" name="userSearchTerm" placeholder="Search {{view}}" [(ngModel)]="userSearchTerm" />
+					<a (click)="userSearchTerm = null" *ngIf="userSearchTerm" style="position:absolute;right: 10px;"><i class="fa fa-remove"></i></a>
+				</label>
+			</form>
+
+		</div>
+	</div>
+
+	<!---->
+	<api-state [state]="routeData?.podState" [toaster]="true" [showSuccess]="false" *ngIf="routeData?.podState">
+		<api-state [state]="routeData?.usersState" [toaster]="true" [showSuccess]="false" *ngIf="routeData?.usersState">
+
+			<div style="padding: 0.4rem .75rem;" class="d-flex flex-row">
+				<table class="table table-sm" style="margin-left:14px;">
+					<thead>
+						<tr>
+							<td>Pod</td>
+							<td style="width:10%">Team Lead</td>
+							<td class="sm" style="width:3%">NDC</td>
+							<td class="sm" style="width:5%">Non-NDC</td>
+							<td class="sm" style="width:3%">TBD</td>
+							<td class="sm" style="width:5%">Non-TBD</td>
+							<td class="sm" style="width:3%">MI</td>
+							<td class="sm" style="width:5%">Non-MI</td>
+							<td class="sm" style="width:5%">Purchase</td>
+							<td class="sm" style="width:5%">Refinance</td>
+							<td class="sm" style="width:4%">COOP</td>
+							<td class="sm" style="width:5%">Non-COOP</td>
+							<td class="sm" style="width:3%">TCF</td>
+							<td class="sm" style="width:5%">Non-TCF</td>
+							<td class="sm" style="width:4%">203K</td>
+							<td class="sm" style="width:5%">Non-203K</td>
+							<td class="sm" style="width:4%">CEMA</td>
+							<td class="sm" style="width:5%">Non-CEMA</td>
+						</tr>
+					</thead>
+				</table>
+			</div>
+
+			<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0" class="flex accordion-md" *ngIf="(routeData.pods | filter: userSearchTerm: 'name' | debounce) as podsFiltered">
+				<ngb-panel *ngFor="let pod of podsFiltered">
+					<ng-template ngbPanelTitle>
+						<table class="table table-sm">
+							<tbody>
+								<tr>
+									<td>{{pod.name}}</td>
+									<td style="width:10%">Mark Hansen</td>
+									<td class="sm" style="width:3%"><i class="fa fa-check green" *ngIf="podRollup[pod.name]?.ndc" aria-hidden="true"></i></td>
+									<td class="sm" style="width:5%"><i class="fa fa-check green" *ngIf="podRollup[pod.name]?.ndcNon" aria-hidden="true"></i></td>
+									<td class="sm" style="width:3%"><i class="fa fa-check green" *ngIf="podRollup[pod.name]?.tbd" aria-hidden="true"></i></td>
+									<td class="sm" style="width:5%"><i class="fa fa-check green" *ngIf="podRollup[pod.name]?.tbdNon" aria-hidden="true"></i></td>
+									<td class="sm" style="width:3%"><i class="fa fa-check green" *ngIf="podRollup[pod.name]?.mi" aria-hidden="true"></i></td>
+									<td class="sm" style="width:5%"><i class="fa fa-check green" *ngIf="podRollup[pod.name]?.miNon" aria-hidden="true"></i></td>
+									<td class="sm" style="width:5%"><i class="fa fa-check green" *ngIf="podRollup[pod.name]?.purchase" aria-hidden="true"></i></td>
+									<td class="sm" style="width:5%"><i class="fa fa-check green" *ngIf="podRollup[pod.name]?.refinance" aria-hidden="true"></i></td>
+									<td class="sm" style="width:4%"><i class="fa fa-check green" *ngIf="podRollup[pod.name]?.coop" aria-hidden="true"></i></td>
+									<td class="sm" style="width:5%"><i class="fa fa-check green" *ngIf="podRollup[pod.name]?.coopNon" aria-hidden="true"></i></td>
+									<td class="sm" style="width:3%"><i class="fa fa-check green" *ngIf="podRollup[pod.name]?.tcf" aria-hidden="true"></i></td>
+									<td class="sm" style="width:5%"><i class="fa fa-check green" *ngIf="podRollup[pod.name]?.tcfNon" aria-hidden="true"></i></td>
+									<td class="sm" style="width:4%"></td>
+									<td class="sm" style="width:5%"></td>
+									<td class="sm" style="width:4%"><i class="fa fa-check green" *ngIf="podRollup[pod.name]?.cema" aria-hidden="true"></i></td>
+									<td class="sm" style="width:5%"><i class="fa fa-check green" *ngIf="podRollup[pod.name]?.cemaNon" aria-hidden="true"></i></td>
+								</tr>
+							</tbody>
+						</table>
+					</ng-template>
+					<ng-template ngbPanelContent>
+						<div style="padding: 0.4rem .75rem;" *ngIf="routeData?.users?.pods">
+
+							<table class="table table-sm" style="margin-left:12px;">
+								<tbody>
+									<tr *ngFor="let user of routeData?.users?.pods[pod.name]">
+										<td>
+											<launch-modal [isButton]="false" modal="UserAddModalComponent" [data]="user" size="xl">
+												{{user.name}}
+											</launch-modal>
+										</td>
+										<td style="width:10%"></td>
+										<td class="sm" style="width:3%"><i class="fa fa-check green" *ngIf="user.rules.ndc" aria-hidden="true"></i></td>
+										<td class="sm" style="width:5%"><i class="fa fa-check green" *ngIf="user.rules.ndcNon" aria-hidden="true"></i></td>
+										<td class="sm" style="width:3%"><i class="fa fa-check green" *ngIf="user.rules.tbd" aria-hidden="true"></i></td>
+										<td class="sm" style="width:5%"><i class="fa fa-check green" *ngIf="user.rules.tbdNon" aria-hidden="true"></i></td>
+										<td class="sm" style="width:3%"><i class="fa fa-check green" *ngIf="user.rules.mi" aria-hidden="true"></i></td>
+										<td class="sm" style="width:5%"><i class="fa fa-check green" *ngIf="user.rules.miNon" aria-hidden="true"></i></td>
+										<td class="sm" style="width:5%"><i class="fa fa-check green" *ngIf="user.rules.purchase" aria-hidden="true"></i></td>
+										<td class="sm" style="width:5%"><i class="fa fa-check green" *ngIf="user.rules.refinance" aria-hidden="true"></i></td>
+										<td class="sm" style="width:4%"><i class="fa fa-check green" *ngIf="user.rules.coop" aria-hidden="true"></i></td>
+										<td class="sm" style="width:5%"><i class="fa fa-check green" *ngIf="user.rules.coopNon" aria-hidden="true"></i></td>
+										<td class="sm" style="width:3%"><i class="fa fa-check green" *ngIf="user.rules.tcf" aria-hidden="true"></i></td>
+										<td class="sm" style="width:5%"><i class="fa fa-check green" *ngIf="user.rules.tcfNon" aria-hidden="true"></i></td>
+										<td class="sm" style="width:4%"></td>
+										<td class="sm" style="width:5%"></td>
+										<td class="sm" style="width:4%"><i class="fa fa-check green" *ngIf="user.rules.cema" aria-hidden="true"></i></td>
+										<td class="sm" style="width:5%"><i class="fa fa-check green" *ngIf="user.rules.cemaNon" aria-hidden="true"></i></td>
+									</tr>
+								</tbody>
+							</table>
+
+						</div>
+					</ng-template>
+				</ngb-panel>
+			</ngb-accordion>
+		</api-state>
+	</api-state>
+
+</div>
+
