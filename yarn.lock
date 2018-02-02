@@ -170,6 +170,10 @@
   version "0.1.8"
   resolved "https://registry.yarnpkg.com/@mello-labs/api-tools/-/api-tools-0.1.8.tgz#fefc5da5f56b34a6430e42144b3c8960781a80ba"
 
+"@mello-labs/datagrid@^0.1.25":
+  version "0.1.29"
+  resolved "https://registry.yarnpkg.com/@mello-labs/datagrid/-/datagrid-0.1.29.tgz#0f66f5ce55a5b50e8c07d230404f3abc5e0a1d86"
+
 "@mello-labs/form-tools@^0.1.17":
   version "0.1.17"
   resolved "https://registry.yarnpkg.com/@mello-labs/form-tools/-/form-tools-0.1.17.tgz#f6f030fc733cd08d345d87e873cf4a24658dc3af"

@@ -31,7 +31,6 @@ export const ApiMap: IStore.ApiMapping = {
 				}
 		},
 
-
 		// Example
 		users: {
 				endpoint: 'https://jsonplaceholder.typicode.com/users',
@@ -49,6 +48,7 @@ export const ApiMap: IStore.ApiMapping = {
 						usersNew = usersNew.map((user, index) => {
 								user.capacityPerc = Math.floor(Math.random() * 100) + 1;
 								user.capacity = (Math.floor(Math.random() * 100) + 1) / 10 + 2;
+								user.load = Math.floor((user.capacity - 2.1) * 10)/10;
 								user.capabilities = Math.floor(Math.random() * 10000) + 1;
 								user.rules = createModel();
 								user.ruleSets = [createModel()];

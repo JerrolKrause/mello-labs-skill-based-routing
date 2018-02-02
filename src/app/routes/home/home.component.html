@@ -29,12 +29,13 @@
 			-->
 
 			<!-- Filter datatable -->
-			<form class="form-inline mr-2 d-inline-block">
-				<label class="icon search" style="position:relative;">
-					<input class="form-control form-control-sm filterSearch" type="text" name="userSearchTerm" placeholder="Search users" [(ngModel)]="userSearchTerm" />
-					<a (click)="userSearchTerm = null" *ngIf="userSearchTerm" style="position:absolute;right: 10px;"><i class="fa fa-remove"></i></a>
-				</label>
-			</form>
+				<!-- Filter datatable -->
+				<form class="form-inline mr-3 d-inline-block">
+						<label class="icon filter" style="position:relative;">
+								<input class="form-control form-control-sm filterSearch" type="text" name="filterGlobal" placeholder="Filter user or pod" [ngModel]="filterGlobal.term" (ngModelChange)="onfilterGlobal($event)" data-qa="hp-filter-global" />
+								<a (click)="filterGlobal.term = null; onfilterGlobal()" *ngIf="filterGlobal.term" style="position:absolute;right: 10px;"><i class="fa fa-remove"></i></a>
+						</label>
+				</form>
 
 		</div>
 	</div>
@@ -45,7 +46,8 @@
 					  [rows]="rows"
 					  [columns]="columns"
 					  [state]="state"
-					  [options]="options">
+					  [options]="options"
+						[filterGlobal]="filterGlobal">
 
 				<datagrid-column prop="name">
 					<ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template>
@@ -55,13 +57,17 @@
 					</ng-template>
 				</datagrid-column>
 
-
+				<datagrid-column prop="pod">
+						<ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template>
+										<a (click)="viewChange('users',value)">{{value}}</a>
+						</ng-template>
+				</datagrid-column>
+					
 				<!-- Custom templates, prop corresponds to column property -->
 				<datagrid-column prop="ndc"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
 				<datagrid-column prop="ndcNon"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
 				<datagrid-column prop="tbd"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
 				<datagrid-column prop="tbdNon"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
-				
 				<datagrid-column prop="mi"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
 				<datagrid-column prop="miNon"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
 				<datagrid-column prop="purchase"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>

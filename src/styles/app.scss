@@ -1,6 +1,10 @@
 // Include global application specific styling here
 
-#logo{display:block;background:url('/assets/img/delegator-logo.png') no-repeat top left;min-width:104px;height:45px;}
+#logo{
+		min-width:132px;display:block;height:45px;position:relative;
+		.logo{background:url('/assets/img/loan-delegator-logo.png') no-repeat top left;min-width:132px;display:block;height:67px;position: absolute;top: -3px;}
+
+}
 
 .table{margin:0;color:#000;
 	th, td{font-weight:normal;font-size:0.9rem;border:0;
