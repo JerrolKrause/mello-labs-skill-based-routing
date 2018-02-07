@@ -51,7 +51,7 @@
 
 				<datagrid-column prop="name">
 					<ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template>
-						<launch-modal [isButton]="false" modal="UserAddModalComponent" [data]="row" size="xl" class="ml-2">
+						<launch-modal [isButton]="false" modal="UserAddModalComponent" [persist]="true" [data]="row" size="xl" class="ml-2">
 							{{value}}
 						</launch-modal>
 					</ng-template>

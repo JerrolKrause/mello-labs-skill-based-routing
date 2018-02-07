@@ -1,22 +1,26 @@
 <div class="modal-header">
-	<h3 class="modal-title"><i aria-hidden="true" class="fa fa-user-plus"></i> Add User</h3>
-	<button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-		<span aria-hidden="true">&times;</span>
-	</button>
+		<h3 class="modal-title">
+				<ng-container *ngIf="data?.name">
+						<i aria-hidden="true" class="fa fa-user"></i> Updating <strong>{{data.name}}</strong>
+				</ng-container>
+				<ng-container *ngIf="!data?.name">
+						<i aria-hidden="true" class="fa fa-user-plus"></i> Add New User
+				</ng-container>
+		</h3>
+		<button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+				<span aria-hidden="true">&times;</span>
+		</button>
 </div>
 
 <div class="modal-body" id="modal-body">
-	<div class="p-3" *ngIf="data?.name">
-		{{data.name}}
-	</div>
-	<assignment-rules [user]="data"></assignment-rules>
+		<assignment-rules [user]="data"></assignment-rules>
 </div>
 
 <div class="modal-footer" style="justify-content: space-between;">
-	<button type="button" class="btn btn-secondary float-left pull-left" aria-label="Close" (click)="activeModal.close()" qa="logout">
-		Cancel
-	</button>
-	<button type="button" class="btn btn-primary" (click)="activeModal.dismiss()" qa="continue">
-		<i aria-hidden="true" class="fa fa-user-plus"></i> Add User
-	</button>
+		<button type="button" class="btn btn-secondary float-left pull-left" aria-label="Close" (click)="activeModal.close()" qa="logout">
+				Cancel
+		</button>
+		<button type="button" class="btn btn-primary" (click)="activeModal.dismiss()" qa="continue">
+				<i aria-hidden="true" class="fa fa-user-plus"></i> Add User
+		</button>
 </div>

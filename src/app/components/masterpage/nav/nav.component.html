@@ -5,22 +5,25 @@
 <div class="collapse navbar-collapse" id="navbar-main" [ngClass]="{'open': isOpen }">
     <div class="navbar-mobile">
 
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-					<i class="fa fa-sliders" aria-hidden="true"></i> Distribution Roles </a>
-            </li>
-			<li class="nav-item">
-				<a class="nav-link" [routerLink]="['/pods']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-					<i class="fa fa-users" aria-hidden="true"></i> Pods
-				</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" [routerLink]="['/loan-assignment']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-					<i class="fa fa-external-link-square" aria-hidden="true"></i> Loan Assignment
-				</a>
-			</li>
-        </ul>
+				<ul class="navbar-nav mr-auto">
+						<li class="nav-item">
+								<a class="nav-link" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+										<i class="fa fa-sliders" aria-hidden="true"></i> Distribution Roles
+								</a>
+						</li>
+						<!--
+		<li class="nav-item">
+			<a class="nav-link" [routerLink]="['/pods']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+				<i class="fa fa-users" aria-hidden="true"></i> Pods
+			</a>
+		</li>
+		-->
+						<li class="nav-item">
+								<a class="nav-link" [routerLink]="['/loan-assignment']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+										<i class="fa fa-external-link-square" aria-hidden="true"></i> Loan Assignment
+								</a>
+						</li>
+				</ul>
         <div ngbDropdown class="form-inline my-2 my-lg-0">
             <a ngbDropdownToggle data-qa="mp-dropdown">
                 <i class="fa fa-user mr-1"></i>

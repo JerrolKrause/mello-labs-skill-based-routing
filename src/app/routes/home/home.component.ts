@@ -89,7 +89,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 				// Get users and load into store
 				this.api.users.get().subscribe();
 
-				this.api.get('/assets/mock-data/columns-users.json').subscribe((result: any[]) => this.columns = result);
+				this.api.get('/assets/mock-data/columns-users.json').subscribe((result: any[]) => {
+						this.columns = result;
+						this.ref.markForCheck();
+				});
 
 				this.subs = [
 						// User Data
@@ -122,7 +125,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 				this.users = _.shuffle(this.users);
 		}
 
-		public viewChange(view: 'pods' | 'users' | 'products', filter:boolean) {
+		public viewChange(view: 'pods' | 'users' | 'products', filter: boolean) {
 				this.ref.detach();
 				this.view = view;
 
@@ -130,7 +133,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 						case 'users':
 								this.state = { "filters": [], "sorts": [], "groups": [{ "dir": "asc", "prop": "pod" }] };
 								if (filter) {
-										this.state.filters = [{ prop: 'pod', operator: 'eq', value: filter}];
+										this.state.filters = [{ prop: 'pod', operator: 'eq', value: filter }];
 								}
 								this.rows = this.users;
 								this.api.get('/assets/mock-data/columns-users.json').subscribe((result: any[]) => {

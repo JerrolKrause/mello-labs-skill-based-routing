@@ -4,7 +4,7 @@ import { Subscription } from "rxjs/Subscription";
 
 @Component({
 		selector: 'assignment-rules',
-		styles: [`.checkbox-group .form-group{margin-bottom:0;}`],
+		styleUrls: [`./assignment-rules.component.scss`],
 		encapsulation: ViewEncapsulation.None,
 		templateUrl: './assignment-rules.component.html'
 })

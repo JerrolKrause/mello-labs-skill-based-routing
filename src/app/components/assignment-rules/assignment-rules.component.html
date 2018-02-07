@@ -1,123 +1,201 @@
 <div class="p-3">
 
-	<div class="card">
-		<div class="card-header p-1 pl-3">
-			<i class="fa fa-tachometer" aria-hidden="true"></i> Capacity
-		</div>
-		<div class="card-body">
-			<capacity [user]="user"></capacity>
-		</div>
-	</div>
-
-	<div class="card mt-3">
-		<div class="card-header p-1 pl-3">
-			<i class="fa fa-cube" aria-hidden="true"></i> User Capabilities
+		<div class="mb-3">
+				<h2 class="title"><i class="fa fa-cube" aria-hidden="true"></i> Capacity</h2>
+				<div class="card" style="background-color: #f6f6f6;">
+						<div class="card-block">
+								<div class="d-inline-block mr-3">Max Capacity: </div>
+								<div class="d-inline-block mr-3"><input class="form-control form-control-sm" type="number" step="0.01" [value]="user?.capacity" /></div>
+						</div>
+				</div>
 		</div>
 
-		<div class="card-body p-2 pl-3 pr-3">
-			<div class="row">
-				<div class="col-6 col-md-6 col-lg-3">
-					<field-component [frmGroup]="formMain" frmControl="lead" labelColumns="4" label="Team Lead" type="select" [model]="['Mark Hansen','John Smith', 'Jane Doe']"></field-component>
-					<hr/>
-					<field-component [frmGroup]="formMain" frmControl="ndc" label="NDC" type="checkbox" [model]="['NDC', 'Non-NDC']"></field-component>
-					<field-component [frmGroup]="formMain" frmControl="tbd" label="TBD" type="checkbox" [model]="['TBD', 'Non-TBD']"></field-component>
+		<div class="mb-3">
+				<h2 class="title"><i class="fa fa-cube" aria-hidden="true"></i> User Capabilities</h2>
+				<div class="card" style="background-color: #f6f6f6;">
+						<div class="card-block">
+								<div class="row">
+										<div class="col-6 col-md-6 col-lg-3">
+												<field-component [frmGroup]="formMain" frmControl="lead" labelColumns="4" label="Team Lead" type="select" [model]="['Mark Hansen','John Smith', 'Jane Doe']"></field-component>
+												<hr />
+												<field-component [frmGroup]="formMain" frmControl="ndc" label="NDC" type="checkbox" [model]="['NDC', 'Non-NDC']"></field-component>
+												<field-component [frmGroup]="formMain" frmControl="tbd" label="TBD" type="checkbox" [model]="['TBD', 'Non-TBD']"></field-component>
+										</div>
+										<div class="col-6 col-md-6 col-lg-3">
+												<field-component [frmGroup]="formMain" frmControl="mi" label="MI" type="checkbox" [model]="['MI', 'Non-MI']"></field-component>
+												<field-component [frmGroup]="formMain" frmControl="type" label="Type" type="checkbox" [model]="typeOption"></field-component>
+												<field-component [frmGroup]="formMain" frmControl="coop" label="COOP" type="checkbox" [model]="['COOP', 'Non-COOP']"></field-component>
+
+										</div>
+										<div class="col-6 col-md-6 col-lg-3">
+												<field-component [frmGroup]="formMain" frmControl="tcf" label="TCF" type="checkbox" [model]="['TCF', 'Non-TCF']"></field-component>
+												<field-component [frmGroup]="formMain" frmControl="203k" label="203K" type="checkbox" [model]="['203K', 'Non-203K']"></field-component>
+												<field-component [frmGroup]="formMain" frmControl="cema" label="CEMA" type="checkbox" [model]="['CEMA', 'Non-CEMA']"></field-component>
+										</div>
+										<div class="col-6 col-md-6 col-lg-3">
+												<h3 class="title mb-1">Special Assignment</h3>
+												<field-component [frmGroup]="formMain" frmControl="special" label="Special Assignment" [inline]="true" type="checkbox" [model]="special"></field-component>
+										</div>
+								</div>
+						</div>
 				</div>
-				<div class="col-6 col-md-6 col-lg-3">
-					<field-component [frmGroup]="formMain" frmControl="mi" label="MI" type="checkbox" [model]="['MI', 'Non-MI']"></field-component>
-					<field-component [frmGroup]="formMain" frmControl="type" label="Type" type="checkbox" [model]="typeOption"></field-component>
-					<field-component [frmGroup]="formMain" frmControl="coop" label="COOP" type="checkbox" [model]="['COOP', 'Non-COOP']"></field-component>
-					
+		</div>
+
+		<h2 class="title"><i class="fa fa-cube" aria-hidden="true"></i> Custom Rulesets</h2>
+		<div class="card" style="background-color: #f6f6f6;">
+				<div class="card-block">
+						<button class="btn btn-primary btn-sm float-right" (click)="ruleSetDelete(i)"><i class="fa fa-trash"></i></button>
+
+						<div class="row">
+								<div class="col-6 col-md-6 col-lg-4 checkbox-group">
+										<h3 class="title mb-2">Products</h3>
+										<field-component [frmGroup]="formMain" frmControl="conforming" [inline]="true" label="Conforming" type="checkbox" [model]="['Conforming']"></field-component>
+
+										<field-component [frmGroup]="formMain" frmControl="fha" [inline]="true" label="FHA" type="checkbox" [model]="['FHA']"></field-component>
+										<div class="pt-2 pr-2 pl-3 pb-0" *ngIf="this.formMain.value.fha">
+												<field-component [frmGroup]="formMain" frmControl="loanAmt" [inline]="true" label="VA Super Max" type="checkbox" [model]="['$0 - $950,000', '$950,000 - $1,500,000', '$1,500,001 - $2,000,000', '$2,000,001 - $3,000,000']"></field-component>
+										</div>
+
+										<field-component [frmGroup]="formMain" frmControl="va" [inline]="true" label="VA" type="checkbox" [model]="['VA']"></field-component>
+										<div class="pt-2 pr-2 pl-3 pb-0" *ngIf="this.formMain.value.va">
+												<field-component [frmGroup]="formMain" frmControl="loanAmt2" [inline]="true" type="checkbox" [model]="['$0 - $950,000', '$950,000 - $1,500,000']"></field-component>
+										</div>
+
+										<field-component [frmGroup]="formMain" frmControl="vaSuperMax" [inline]="true" label="VA Super Max" type="checkbox" [model]="['VA Super Max']"></field-component>
+										<div class="pt-2 pr-2 pl-3 pb-0" *ngIf="this.formMain.value.vaSuperMax">
+												<field-component [frmGroup]="formMain" frmControl="loanAmt3" [inline]="true" type="checkbox" [model]="[ '$1,500,001 - $2,000,000', '$2,000,001 - $3,000,000']"></field-component>
+										</div>
+
+										<field-component [frmGroup]="formMain" frmControl="jumbo" [inline]="true" label="Jumbo Advantage" type="checkbox" [model]="['Jumbo Advantage']"></field-component>
+										<field-component [frmGroup]="formMain" frmControl="cq" [inline]="true" label="CQ IRRRL" type="checkbox" [model]="['CQ IRRRL']"></field-component>
+										<field-component [frmGroup]="formMain" frmControl="homeReady" [inline]="true" label="Home Ready" type="checkbox" [model]="['Home Ready']"></field-component>
+										<field-component [frmGroup]="formMain" frmControl="homePossible" [inline]="true" label="Home Possible" type="checkbox" [model]="['Home Possible']"></field-component>
+										<field-component [frmGroup]="formMain" frmControl="40yr" [inline]="true" label="40yr I/O" type="checkbox" [model]="['40yr I/O']"></field-component>
+										<field-component [frmGroup]="formMain" frmControl="executive" [inline]="true" label="Executive High Balance" type="checkbox" [model]="['Executive High Balance']"></field-component>
+										<field-component [frmGroup]="formMain" frmControl="streamline" [inline]="true" label="Streamline (FHA)" type="checkbox" [model]="['Streamline (FHA)']"></field-component>
+										<field-component [frmGroup]="formMain" frmControl="jumboClassic" [inline]="true" label="Jumbo Classic/Prime" type="checkbox" [model]="['Jumbo Classic/Prime']"></field-component>
+
+								</div>
+								<div class="col-6 col-md-6 col-lg-4">
+										<h3 class="title mb-2">PODs</h3>
+										<field-component [frmGroup]="formMain" frmControl="podsAll" [inline]="true" label="POD" type="checkbox" [model]="['All Pods']"></field-component>
+										<hr />
+										<field-component [frmGroup]="formMain" frmControl="pods" [inline]="true" label="POD" type="checkbox" [model]="pods"></field-component>
+								</div>
+								<div class="col-6 col-md-6 col-lg-4">
+										<h3 class="title mb-2">Restricted States</h3>
+										<field-component [frmGroup]="formMain" frmControl="state" label="State" [inline]="true" type="checkbox" [model]="states"></field-component>
+
+								</div>
+
+						</div>
 				</div>
-				<div class="col-6 col-md-6 col-lg-3">
-					<field-component [frmGroup]="formMain" frmControl="tcf" label="TCF" type="checkbox" [model]="['TCF', 'Non-TCF']"></field-component>
-					<field-component [frmGroup]="formMain" frmControl="203k" label="203K" type="checkbox" [model]="['203K', 'Non-203K']"></field-component>
-					<field-component [frmGroup]="formMain" frmControl="cema" label="CEMA" type="checkbox" [model]="['CEMA', 'Non-CEMA']"></field-component>
-				</div>
-				<div class="col-6 col-md-6 col-lg-3">
-					<h3 class="title mb-1">Special Assignment</h3>
-					<field-component [frmGroup]="formMain" frmControl="special" label="Special Assignment" [inline]="true" type="checkbox" [model]="special"></field-component>
-				</div>
-				<!--
-				<div class="col-6 col-md-6 col-lg-3">
-					<h3 class="title mb-3"><i class="fa fa-files-o" aria-hidden="true"></i> Templates</h3>
-					<p><button class="btn btn-secondary btn-sm w-100" (click)="templateSet('default')">Default User</button></p>
-					<p><button class="btn btn-secondary btn-sm w-100" (click)="templateSet('power')">Power User</button></p>
-					<p><button class="btn btn-secondary btn-sm w-100" (click)="templateSet('moneyed')">Highly Paid User</button></p>
-				</div>
-				-->
+		</div>
+		<!--
+		<div class="card">
+			<div class="card-header p-1 pl-3">
+				<i class="fa fa-tachometer" aria-hidden="true"></i> Capacity
+			</div>
+			<div class="card-body">
+				<capacity [user]="user"></capacity>
 			</div>
 		</div>
-	</div>
 
-	<div class="card mt-3">
-		<div class="card-header p-1 pl-3 pr-2">
-			<i class="fa fa-cube" aria-hidden="true"></i> Custom Rulesets 
-			<em *ngIf="user?.ruleSets?.length">({{user?.ruleSets?.length}})</em>
-		</div>
+		<div class="card mt-3">
+			<div class="card-header p-1 pl-3">
+				<i class="fa fa-cube" aria-hidden="true"></i> User Capabilities
+			</div>
 
-		<ng-container *ngIf="user?.ruleSets?.length">
-			<div class="card-body p-2 pl-3 pr-3" style="border-top:1px solid #ccc;" *ngFor="let set of user.ruleSets; let i = index">
-				<button class="btn btn-primary btn-sm float-right" (click)="ruleSetDelete(i)"><i class="fa fa-trash"></i></button>
-			
+			<div class="card-body p-2 pl-3 pr-3">
 				<div class="row">
-					<div class="col-6 col-md-6 col-lg-4 checkbox-group">
-						<h3 class="title mb-2">Products</h3>
-						<field-component [frmGroup]="formMain" frmControl="conforming" [inline]="true" label="Conforming" type="checkbox" [model]="['Conforming']"></field-component>
-						
-						<field-component [frmGroup]="formMain" frmControl="fha" [inline]="true" label="FHA" type="checkbox" [model]="['FHA']"></field-component>
-						<div class="pt-2 pr-2 pl-3 pb-0" *ngIf="this.formMain.value.fha">
-							<field-component [frmGroup]="formMain" frmControl="loanAmt" [inline]="true" label="VA Super Max" type="checkbox" [model]="['$0 - $950,000', '$950,000 - $1,500,000', '$1,500,001 - $2,000,000', '$2,000,001 - $3,000,000']"></field-component>
-						</div>
-
-						<field-component [frmGroup]="formMain" frmControl="va" [inline]="true" label="VA" type="checkbox" [model]="['VA']"></field-component>
-						<div class="pt-2 pr-2 pl-3 pb-0" *ngIf="this.formMain.value.va">
-							<field-component [frmGroup]="formMain" frmControl="loanAmt2" [inline]="true" type="checkbox" [model]="['$0 - $950,000', '$950,000 - $1,500,000']"></field-component>
-						</div>
-
-						<field-component [frmGroup]="formMain" frmControl="vaSuperMax" [inline]="true" label="VA Super Max" type="checkbox" [model]="['VA Super Max']"></field-component>
-						<div class="pt-2 pr-2 pl-3 pb-0" *ngIf="this.formMain.value.vaSuperMax">
-							<field-component [frmGroup]="formMain" frmControl="loanAmt3" [inline]="true" type="checkbox" [model]="[ '$1,500,001 - $2,000,000', '$2,000,001 - $3,000,000']"></field-component>
-						</div>
-
-						<field-component [frmGroup]="formMain" frmControl="jumbo" [inline]="true" label="Jumbo Advantage" type="checkbox" [model]="['Jumbo Advantage']"></field-component>
-						<field-component [frmGroup]="formMain" frmControl="cq" [inline]="true" label="CQ IRRRL" type="checkbox" [model]="['CQ IRRRL']"></field-component>
-						<field-component [frmGroup]="formMain" frmControl="homeReady" [inline]="true" label="Home Ready" type="checkbox" [model]="['Home Ready']"></field-component>
-						<field-component [frmGroup]="formMain" frmControl="homePossible" [inline]="true" label="Home Possible" type="checkbox" [model]="['Home Possible']"></field-component>
-						<field-component [frmGroup]="formMain" frmControl="40yr" [inline]="true" label="40yr I/O" type="checkbox" [model]="['40yr I/O']"></field-component>
-						<field-component [frmGroup]="formMain" frmControl="executive" [inline]="true" label="Executive High Balance" type="checkbox" [model]="['Executive High Balance']"></field-component>
-						<field-component [frmGroup]="formMain" frmControl="streamline" [inline]="true" label="Streamline (FHA)" type="checkbox" [model]="['Streamline (FHA)']"></field-component>
-						<field-component [frmGroup]="formMain" frmControl="jumboClassic" [inline]="true" label="Jumbo Classic/Prime" type="checkbox" [model]="['Jumbo Classic/Prime']"></field-component>
-						<!--
-					<hr/>
-					
-						<field-component [frmGroup]="formMain" frmControl="prod" label="Prod" [inline]="true" type="checkbox" [model]="prod"></field-component>
-						-->
-					</div>
-					<div class="col-6 col-md-6 col-lg-4">
-						<h3 class="title mb-2">PODs</h3>
-						<field-component [frmGroup]="formMain" frmControl="podsAll" [inline]="true" label="POD" type="checkbox" [model]="['All Pods']"></field-component>
+					<div class="col-6 col-md-6 col-lg-3">
+						<field-component [frmGroup]="formMain" frmControl="lead" labelColumns="4" label="Team Lead" type="select" [model]="['Mark Hansen','John Smith', 'Jane Doe']"></field-component>
 						<hr/>
-						<field-component [frmGroup]="formMain" frmControl="pods" [inline]="true" label="POD" type="checkbox" [model]="pods"></field-component>
+						<field-component [frmGroup]="formMain" frmControl="ndc" label="NDC" type="checkbox" [model]="['NDC', 'Non-NDC']"></field-component>
+						<field-component [frmGroup]="formMain" frmControl="tbd" label="TBD" type="checkbox" [model]="['TBD', 'Non-TBD']"></field-component>
 					</div>
-					<div class="col-6 col-md-6 col-lg-4">
-						<h3 class="title mb-2">Restricted States</h3>
-						<field-component [frmGroup]="formMain" frmControl="state" label="State" [inline]="true" type="checkbox" [model]="states"></field-component>
-						<!--
-							<h3 class="title mb-2">Loan Amt</h3>
-							<field-component [frmGroup]="formMain" frmControl="loanAmt" label="Loan Amt" [inline]="true" type="checkbox" [model]="loanAmt"></field-component>
-							-->
+					<div class="col-6 col-md-6 col-lg-3">
+						<field-component [frmGroup]="formMain" frmControl="mi" label="MI" type="checkbox" [model]="['MI', 'Non-MI']"></field-component>
+						<field-component [frmGroup]="formMain" frmControl="type" label="Type" type="checkbox" [model]="typeOption"></field-component>
+						<field-component [frmGroup]="formMain" frmControl="coop" label="COOP" type="checkbox" [model]="['COOP', 'Non-COOP']"></field-component>
+
 					</div>
-				
+					<div class="col-6 col-md-6 col-lg-3">
+						<field-component [frmGroup]="formMain" frmControl="tcf" label="TCF" type="checkbox" [model]="['TCF', 'Non-TCF']"></field-component>
+						<field-component [frmGroup]="formMain" frmControl="203k" label="203K" type="checkbox" [model]="['203K', 'Non-203K']"></field-component>
+						<field-component [frmGroup]="formMain" frmControl="cema" label="CEMA" type="checkbox" [model]="['CEMA', 'Non-CEMA']"></field-component>
+					</div>
+					<div class="col-6 col-md-6 col-lg-3">
+						<h3 class="title mb-1">Special Assignment</h3>
+						<field-component [frmGroup]="formMain" frmControl="special" label="Special Assignment" [inline]="true" type="checkbox" [model]="special"></field-component>
+					</div>
+
 				</div>
 			</div>
-		</ng-container>
-		<ng-container *ngIf="!user?.ruleSets?.length">
-			<div class="container-body p-2">No rulesets found for this user, would you like to <a (click)="rulSetAdd()">add one</a>?</div>
-		</ng-container>
-	</div>
+		</div>
 
-	<div class="text-right pt-3">
-		<button class="btn btn-primary btn-sm" (click)="rulSetAdd()"><i class="fa fa-plus" aria-hidden="true"></i> Add New Rule</button>
-	</div>
+		<div class="card mt-3">
+			<div class="card-header p-1 pl-3 pr-2">
+				<i class="fa fa-cube" aria-hidden="true"></i> Custom Rulesets
+				<em *ngIf="user?.ruleSets?.length">({{user?.ruleSets?.length}})</em>
+			</div>
 
+			<ng-container *ngIf="user?.ruleSets?.length">
+				<div class="card-body p-2 pl-3 pr-3" style="border-top:1px solid #ccc;" *ngFor="let set of user.ruleSets; let i = index">
+					<button class="btn btn-primary btn-sm float-right" (click)="ruleSetDelete(i)"><i class="fa fa-trash"></i></button>
+
+					<div class="row">
+						<div class="col-6 col-md-6 col-lg-4 checkbox-group">
+							<h3 class="title mb-2">Products</h3>
+							<field-component [frmGroup]="formMain" frmControl="conforming" [inline]="true" label="Conforming" type="checkbox" [model]="['Conforming']"></field-component>
+
+							<field-component [frmGroup]="formMain" frmControl="fha" [inline]="true" label="FHA" type="checkbox" [model]="['FHA']"></field-component>
+							<div class="pt-2 pr-2 pl-3 pb-0" *ngIf="this.formMain.value.fha">
+								<field-component [frmGroup]="formMain" frmControl="loanAmt" [inline]="true" label="VA Super Max" type="checkbox" [model]="['$0 - $950,000', '$950,000 - $1,500,000', '$1,500,001 - $2,000,000', '$2,000,001 - $3,000,000']"></field-component>
+							</div>
+
+							<field-component [frmGroup]="formMain" frmControl="va" [inline]="true" label="VA" type="checkbox" [model]="['VA']"></field-component>
+							<div class="pt-2 pr-2 pl-3 pb-0" *ngIf="this.formMain.value.va">
+								<field-component [frmGroup]="formMain" frmControl="loanAmt2" [inline]="true" type="checkbox" [model]="['$0 - $950,000', '$950,000 - $1,500,000']"></field-component>
+							</div>
+
+							<field-component [frmGroup]="formMain" frmControl="vaSuperMax" [inline]="true" label="VA Super Max" type="checkbox" [model]="['VA Super Max']"></field-component>
+							<div class="pt-2 pr-2 pl-3 pb-0" *ngIf="this.formMain.value.vaSuperMax">
+								<field-component [frmGroup]="formMain" frmControl="loanAmt3" [inline]="true" type="checkbox" [model]="[ '$1,500,001 - $2,000,000', '$2,000,001 - $3,000,000']"></field-component>
+							</div>
+
+							<field-component [frmGroup]="formMain" frmControl="jumbo" [inline]="true" label="Jumbo Advantage" type="checkbox" [model]="['Jumbo Advantage']"></field-component>
+							<field-component [frmGroup]="formMain" frmControl="cq" [inline]="true" label="CQ IRRRL" type="checkbox" [model]="['CQ IRRRL']"></field-component>
+							<field-component [frmGroup]="formMain" frmControl="homeReady" [inline]="true" label="Home Ready" type="checkbox" [model]="['Home Ready']"></field-component>
+							<field-component [frmGroup]="formMain" frmControl="homePossible" [inline]="true" label="Home Possible" type="checkbox" [model]="['Home Possible']"></field-component>
+							<field-component [frmGroup]="formMain" frmControl="40yr" [inline]="true" label="40yr I/O" type="checkbox" [model]="['40yr I/O']"></field-component>
+							<field-component [frmGroup]="formMain" frmControl="executive" [inline]="true" label="Executive High Balance" type="checkbox" [model]="['Executive High Balance']"></field-component>
+							<field-component [frmGroup]="formMain" frmControl="streamline" [inline]="true" label="Streamline (FHA)" type="checkbox" [model]="['Streamline (FHA)']"></field-component>
+							<field-component [frmGroup]="formMain" frmControl="jumboClassic" [inline]="true" label="Jumbo Classic/Prime" type="checkbox" [model]="['Jumbo Classic/Prime']"></field-component>
+
+						</div>
+						<div class="col-6 col-md-6 col-lg-4">
+							<h3 class="title mb-2">PODs</h3>
+							<field-component [frmGroup]="formMain" frmControl="podsAll" [inline]="true" label="POD" type="checkbox" [model]="['All Pods']"></field-component>
+							<hr/>
+							<field-component [frmGroup]="formMain" frmControl="pods" [inline]="true" label="POD" type="checkbox" [model]="pods"></field-component>
+						</div>
+						<div class="col-6 col-md-6 col-lg-4">
+							<h3 class="title mb-2">Restricted States</h3>
+							<field-component [frmGroup]="formMain" frmControl="state" label="State" [inline]="true" type="checkbox" [model]="states"></field-component>
+
+						</div>
+
+					</div>
+				</div>
+			</ng-container>
+			<ng-container *ngIf="!user?.ruleSets?.length">
+				<div class="container-body p-2">No rulesets found for this user, would you like to <a (click)="rulSetAdd()">add one</a>?</div>
+			</ng-container>
+		</div>
+
+		<div class="text-right pt-3">
+			<button class="btn btn-primary btn-sm" (click)="rulSetAdd()"><i class="fa fa-plus" aria-hidden="true"></i> Add New Rule</button>
+		</div>
+		-->
 </div>
