@@ -7,3 +7,4 @@ export * from './home/home.component';
 export * from './pods/pods.component';
 export * from './user-admin/user-admin.component';
 export * from './loan-assignment/loan-assignment.component';
+export * from './product-priority/product-priority.component';

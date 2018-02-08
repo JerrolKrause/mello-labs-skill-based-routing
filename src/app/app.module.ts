@@ -11,6 +11,7 @@ import { environment } from '../environments/environment';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; // Bootstrap
 import { StoreModule } from '@ngrx/store';
 import { DatePipe, CurrencyPipe } from '@angular/common';
+import { DndModule } from 'ng2-dnd';
 
 // Mello Labs Tools
 import { ApiToolsModule, ApiReducer, ApiStatusReducer } from '@mello-labs/api-tools';
@@ -28,8 +29,8 @@ enableProdMode();
 
 // Routes
 import {
-		NoContentComponent, LoginComponent, HomeComponent, PodsComponent,
-	UserAdminComponent, LoanAssignmentComponent
+	NoContentComponent, LoginComponent, HomeComponent, PodsComponent,
+	UserAdminComponent, LoanAssignmentComponent, ProductPriorityComponent
 } from '@routes';
 
 // Components
@@ -64,6 +65,7 @@ import {
 	UIModalService,
 	UIStoreService,
 } from '@ui';
+
 
 // Application wide providers
 export const APP_COMPONENTS = [
@@ -101,7 +103,7 @@ export const APP_PROVIDERS = [
 	declarations: [
 		AppComponent,
 		APP_COMPONENTS,
-		FilterPipe, DebouncePipe, PodsComponent
+		FilterPipe, DebouncePipe, PodsComponent, ProductPriorityComponent
 	],
 	imports: [
 		// Angular
@@ -113,6 +115,7 @@ export const APP_PROVIDERS = [
 
 		NgbModule.forRoot(),// ng-bootstrap
 		StoreModule.forRoot({ api: ApiReducer, apiStatus: ApiStatusReducer, ui: UIStoreReducer }),// NGRX
+		DndModule.forRoot(),
 
 		// Mello Labs
 		ApiToolsModule.forRoot(),

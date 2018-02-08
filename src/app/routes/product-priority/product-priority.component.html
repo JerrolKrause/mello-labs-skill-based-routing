@@ -1,0 +1,22 @@
+<div class="container-fluid" id="prodPrior">
+		<div class="row">
+				<div class="col-4 offset-4">
+						<div class="card">
+								<div class="card-block">
+										<p><i class="fa fa-arrows-v" aria-hidden="true"></i> Click and drag to reorder product priority</p>
+										
+										<div class="list-group" dnd-sortable-container [sortableData]="products">
+												<button 
+														class="list-group-item justify-content-between" 
+														dnd-sortable [sortableIndex]="i"
+														*ngFor="let product of products;let i = index;">
+														{{product}}
+														<span class="badge badge-default badge-pill">{{i + 1}}</span>
+												</button>
+										</div>
+
+								</div>
+						</div>
+				</div>
+		</div>
+</div>
