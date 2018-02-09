@@ -1,103 +1,109 @@
 <div id="home" class="container-fluid" *ngIf="{ state: usersState$ | async, users: users$ | async } as routeData">
 
-	<div class="card mb-3">
-		<div class="card-header p-2">
+		<div class="card mb-3">
+				<div class="card-header p-2">
 
-			<div class="float-right">
-				<!-- Add User -->
-				<launch-modal classes="btn btn-primary btn-sm mr-2" modal="UserAddModalComponent" size="xl">
-					<i class="fa fa-user-plus" aria-hidden="true"></i> Add User
-				</launch-modal>
-				<!-- Refresh users -->
-				<button class="btn btn-icon btn-sm mr-2" (click)="usersRefresh()" [disabled]="routeData?.state?.loading">
-					<i class="fa fa-refresh"></i>
-				</button>
-			</div>
+						<div class="float-right">
+								<!-- Add User -->
+								<launch-modal classes="btn btn-primary btn-sm mr-2" modal="UserAddModalComponent" size="xl">
+										<i class="fa fa-user-plus" aria-hidden="true"></i> Add User
+								</launch-modal>
+								<!-- Refresh users -->
+								<button class="btn btn-icon btn-sm mr-2" (click)="usersRefresh()" [disabled]="routeData?.state?.loading">
+										<i class="fa fa-refresh"></i>
+								</button>
+						</div>
 
-			<!-- Pod Change -->
-			<div class="btn-group">
-				<button class="btn btn-sm" [ngClass]="{'btn-primary' : view == 'users', 'btn-secondary' : view != 'users'}" (click)="viewChange('users')">Pods with Users</button>
-				<button class="btn btn-sm" [ngClass]="{'btn-primary' : view == 'pods', 'btn-secondary' : view != 'pods'}" (click)="viewChange('pods')">Pods Overview</button>
-				<button class="btn btn-sm" [ngClass]="{'btn-primary' : view == 'products', 'btn-secondary' : view != 'products'}" (click)="viewChange('products')">Users with Products</button>
-			</div>
+						<!-- Team Lead -->
+						<form class="form-inline mr-3 d-inline-block">
+								<label style="position:relative;">
+										<select class="form-control form-control-sm">
+												<option disabled>-- Team Lead --</option>
+												<option selected>John Smith</option>
+												<option>Jane Smith</option>
+												<option>James Smith</option>
+										</select>
+								</label>
+						</form>
 
-			<!--
-			<div class="btn-group">
-				<button class="btn btn-sm" [ngClass]="{'btn-primary' : type == 'products', 'btn-secondary' : type != 'products'}" (click)="typeChange('products')">Products</button>
-				<button class="btn btn-sm" [ngClass]="{'btn-primary' : type == 'capabilities', 'btn-secondary' : type != 'capabilities'}" (click)="typeChange('capabilities')">Capabilities</button>
-			</div>
-			-->
+						<!-- Pod Change -->
+						<div class="btn-group">
+								<button class="btn btn-sm" [ngClass]="{'btn-primary' : view == 'users', 'btn-secondary' : view != 'users'}" (click)="viewChange('users')">Users</button>
+								<button class="btn btn-sm" [ngClass]="{'btn-primary' : view == 'pods', 'btn-secondary' : view != 'pods'}" (click)="viewChange('pods')">Pods Overview</button>
+								<!--
+								<button class="btn btn-sm" [ngClass]="{'btn-primary' : view == 'products', 'btn-secondary' : view != 'products'}" (click)="viewChange('products')">Users with Products</button>
+								-->
+						</div>
 
-			<!-- Filter datatable -->
-				<!-- Filter datatable -->
-				<form class="form-inline mr-3 d-inline-block">
-						<label class="icon filter" style="position:relative;">
-								<input class="form-control form-control-sm filterSearch" type="text" name="filterGlobal" placeholder="Filter user or pod" [ngModel]="filterGlobal.term" (ngModelChange)="onfilterGlobal($event)" data-qa="hp-filter-global" />
-								<a (click)="filterGlobal.term = null; onfilterGlobal()" *ngIf="filterGlobal.term" style="position:absolute;right: 10px;"><i class="fa fa-remove"></i></a>
-						</label>
-				</form>
+						<!-- Filter datatable -->
+						<form class="form-inline mr-3 d-inline-block">
+								<label class="icon filter" style="position:relative;">
+										<input class="form-control form-control-sm filterSearch" type="text" name="filterGlobal" placeholder="Filter user or pod" [ngModel]="filterGlobal.term" (ngModelChange)="onfilterGlobal($event)" data-qa="hp-filter-global" />
+										<a (click)="filterGlobal.term = null; onfilterGlobal()" *ngIf="filterGlobal.term" style="position:absolute;right: 10px;"><i class="fa fa-remove"></i></a>
+								</label>
+						</form>
 
+				</div>
 		</div>
-	</div>
 
-	<api-state [state]="routeData?.state" [toaster]="true" [showSuccess]="false" *ngIf="routeData?.state">
-		<div style="position: relative;min-height: calc(100vh - 160px);">
-			<datagrid #datagrid *ngIf="rows?.length"
-					  [rows]="rows"
-					  [columns]="columns"
-					  [state]="state"
-					  [options]="options"
-						[filterGlobal]="filterGlobal">
+		<api-state [state]="routeData?.state" [toaster]="true" [showSuccess]="false" *ngIf="routeData?.state">
+				<div style="position: relative;min-height: calc(100vh - 160px);">
+						<datagrid #datagrid *ngIf="rows?.length"
+											[rows]="rows"
+											[columns]="columns"
+											[state]="state"
+											[options]="options"
+											[filterGlobal]="filterGlobal">
 
-				<datagrid-column prop="name">
-					<ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template>
-						<launch-modal [isButton]="false" modal="UserAddModalComponent" [persist]="true" [data]="row" size="xl" class="ml-2">
-							{{value}}
-						</launch-modal>
-					</ng-template>
-				</datagrid-column>
+								<datagrid-column prop="name">
+										<ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template>
+												<launch-modal [isButton]="false" modal="UserAddModalComponent" [persist]="true" [data]="row" size="xl" class="ml-2">
+														{{value}}
+												</launch-modal>
+										</ng-template>
+								</datagrid-column>
 
-				<datagrid-column prop="pod">
-						<ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template>
-										<a (click)="viewChange('users',value)">{{value}}</a>
-						</ng-template>
-				</datagrid-column>
-					
-				<!-- Custom templates, prop corresponds to column property -->
-				<datagrid-column prop="ndc"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
-				<datagrid-column prop="ndcNon"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
-				<datagrid-column prop="tbd"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
-				<datagrid-column prop="tbdNon"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
-				<datagrid-column prop="mi"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
-				<datagrid-column prop="miNon"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
-				<datagrid-column prop="purchase"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
-				<datagrid-column prop="refinance"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
-				<datagrid-column prop="coop"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
-				<datagrid-column prop="coopNon"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
-				<datagrid-column prop="tcf"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
-				<datagrid-column prop="tcfNon"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
-				<datagrid-column prop="203K"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
-				<datagrid-column prop="203KNon"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
-				<datagrid-column prop="cema"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
-				<datagrid-column prop="cemaNon"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
-				
+								<datagrid-column prop="pod">
+										<ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template>
+												<a (click)="viewChange('users',value)" class="pl-2">{{value}}</a>
+										</ng-template>
+								</datagrid-column>
 
-				<datagrid-column prop="conforming"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
-				<datagrid-column prop="fha"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
-				<datagrid-column prop="va"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
-				<datagrid-column prop="vaSuperMax"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
-				<datagrid-column prop="jumboAdvantage"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
-				<datagrid-column prop="cqIrrl"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
-				<datagrid-column prop="homeReady"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
-				<datagrid-column prop="homePossible"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
-				<datagrid-column prop="fortyIo"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
-				<datagrid-column prop="executiveHighBalance"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
-				<datagrid-column prop="streamline"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
-				<datagrid-column prop="jumboClassic"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
+								<!-- Custom templates, prop corresponds to column property -->
+								<datagrid-column prop="ndc"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
+								<datagrid-column prop="ndcNon"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
+								<datagrid-column prop="tbd"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
+								<datagrid-column prop="tbdNon"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
+								<datagrid-column prop="mi"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
+								<datagrid-column prop="miNon"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
+								<datagrid-column prop="purchase"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
+								<datagrid-column prop="refinance"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
+								<datagrid-column prop="coop"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
+								<datagrid-column prop="coopNon"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
+								<datagrid-column prop="tcf"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
+								<datagrid-column prop="tcfNon"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
+								<datagrid-column prop="203K"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
+								<datagrid-column prop="203KNon"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
+								<datagrid-column prop="cema"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
+								<datagrid-column prop="cemaNon"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
 
-			</datagrid>
-		</div>
-	</api-state>
+
+								<datagrid-column prop="conforming"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
+								<datagrid-column prop="fha"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
+								<datagrid-column prop="va"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
+								<datagrid-column prop="vaSuperMax"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
+								<datagrid-column prop="jumboAdvantage"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
+								<datagrid-column prop="cqIrrl"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
+								<datagrid-column prop="homeReady"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
+								<datagrid-column prop="homePossible"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
+								<datagrid-column prop="fortyIo"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
+								<datagrid-column prop="executiveHighBalance"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
+								<datagrid-column prop="streamline"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
+								<datagrid-column prop="jumboClassic"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
+
+						</datagrid>
+				</div>
+		</api-state>
 
 </div>
 
