@@ -1,0 +1,146 @@
+[
+		{
+				"prop": "name",
+				"label": "Name",
+				"columnType": "string",
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "pod",
+				"label": "POD",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "capacity",
+				"label": "Capacity",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "load",
+				"label": "Load",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "conforming",
+				"label": "Conforming",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "fha",
+				"label": "FHA",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "va",
+				"label": "VA",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "vaSuperMax",
+				"label": "VA Super Max",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "jumboAdvantage",
+				"label": "Jumbo Advantage",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "cqIrrl",
+				"label": "CQ IRRRL",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "homeReady",
+				"label": "Home Ready",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "homePossible",
+				"label": "Home Possible",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "fortyIo",
+				"label": "40yr I/O",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+
+		{
+				"prop": "executiveHighBalance",
+				"label": "Executive High Balance",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "streamline",
+				"label": "Streamline (FHA)",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "jumboClassic",
+				"label": "Jumbo Classic/Prime",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		}
+]

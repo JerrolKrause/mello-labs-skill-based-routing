@@ -9,10 +9,10 @@
       "urls": [
         "/mello-labs-skill-based-routing/favicon.ico",
         "/mello-labs-skill-based-routing/index.html",
-        "/mello-labs-skill-based-routing/inline.8184b1411273dd936735.bundle.js",
-        "/mello-labs-skill-based-routing/main.d3a4e14380f8e5a5ea20.bundle.js",
+        "/mello-labs-skill-based-routing/inline.9e46c494302434281659.bundle.js",
+        "/mello-labs-skill-based-routing/main.3640b4c6106b45f3b7ad.bundle.js",
         "/mello-labs-skill-based-routing/polyfills.9afba58cc5c5e906563e.bundle.js",
-        "/mello-labs-skill-based-routing/styles.6c0b7696e250e24f68cb.bundle.css"
+        "/mello-labs-skill-based-routing/styles.aafa1d48b8b36e238bea.bundle.css"
       ],
       "patterns": []
     },
@@ -22,6 +22,10 @@
       "updateMode": "prefetch",
       "urls": [
         "/mello-labs-skill-based-routing/assets/img/delegator-logo.png",
+        "/mello-labs-skill-based-routing/assets/img/loan-delegator-logo.png",
+        "/mello-labs-skill-based-routing/assets/mock-data/columns-pods.json",
+        "/mello-labs-skill-based-routing/assets/mock-data/columns-products.json",
+        "/mello-labs-skill-based-routing/assets/mock-data/columns-users.json",
         "/mello-labs-skill-based-routing/assets/mock-data/env-settings.json",
         "/mello-labs-skill-based-routing/assets/mock-data/loan-assignment.json",
         "/mello-labs-skill-based-routing/assets/mock-data/login.json",
@@ -33,17 +37,21 @@
   ],
   "dataGroups": [],
   "hashTable": {
-    "/mello-labs-skill-based-routing/inline.8184b1411273dd936735.bundle.js": "1905e3b8e6171b2690f24d0338db6ae28274a485",
+    "/mello-labs-skill-based-routing/inline.9e46c494302434281659.bundle.js": "9d920b66ebe12560bf3b25dc2754395acadebf51",
     "/mello-labs-skill-based-routing/assets/img/delegator-logo.png": "8e75a63b723e39d3baf7d31cc604b605b87a39d9",
-    "/mello-labs-skill-based-routing/main.d3a4e14380f8e5a5ea20.bundle.js": "1b64b8bdd07f4ca11d92b841078e4887e35a5afa",
-    "/mello-labs-skill-based-routing/assets/mock-data/env-settings.json": "31bb9cb6c8bb16a4e728e95f9fcb6e4b84a6e67b",
+    "/mello-labs-skill-based-routing/main.3640b4c6106b45f3b7ad.bundle.js": "b7b89fec2e4c59e0a393711ff07e30e197d4b24c",
+    "/mello-labs-skill-based-routing/assets/img/loan-delegator-logo.png": "1240d0a73fbf2e51417da94f65521682e7ef91ae",
     "/mello-labs-skill-based-routing/polyfills.9afba58cc5c5e906563e.bundle.js": "ab0d2811797b2af594b591116f226ad278ffced6",
-    "/mello-labs-skill-based-routing/assets/mock-data/loan-assignment.json": "89a44bb2243d67d2c952860bb8a6ccbd814b9763",
-    "/mello-labs-skill-based-routing/styles.6c0b7696e250e24f68cb.bundle.css": "2612471d67ec99afd676f5fe3b04feed89fb29dc",
-    "/mello-labs-skill-based-routing/assets/mock-data/login.json": "4e4b0d718b64155c94706003eb8703fdc830c658",
+    "/mello-labs-skill-based-routing/assets/mock-data/columns-pods.json": "2c3e1456c92c4f6c306e76c33bd8c7db64ef83f0",
+    "/mello-labs-skill-based-routing/styles.aafa1d48b8b36e238bea.bundle.css": "c320313655cd73efeb03baacc56fc2b89e720254",
+    "/mello-labs-skill-based-routing/assets/mock-data/columns-products.json": "2812f61b1481008c582350be643e5ec3eb0fc273",
     "/mello-labs-skill-based-routing/favicon.ico": "928d35ef49194db2c926ac767ccbba09ee2ae6cb",
+    "/mello-labs-skill-based-routing/assets/mock-data/columns-users.json": "6c88012636c12b28dc634df0fd198c19e751a882",
+    "/mello-labs-skill-based-routing/index.html": "1d89ce78dbc42e96f30ee1d3e86025802344b1eb",
+    "/mello-labs-skill-based-routing/assets/mock-data/env-settings.json": "31bb9cb6c8bb16a4e728e95f9fcb6e4b84a6e67b",
+    "/mello-labs-skill-based-routing/assets/mock-data/loan-assignment.json": "89a44bb2243d67d2c952860bb8a6ccbd814b9763",
+    "/mello-labs-skill-based-routing/assets/mock-data/login.json": "4e4b0d718b64155c94706003eb8703fdc830c658",
     "/mello-labs-skill-based-routing/assets/mock-data/pods.json": "d9d32a700ef7ef8f988dc57dc71552daf21249b2",
-    "/mello-labs-skill-based-routing/index.html": "7e52dbff65352968af9e815d55a05e0baefacaea",
     "/mello-labs-skill-based-routing/assets/mock-data/users.json": "b658a92bfd3d8423f5df9fc4c86844d9ffd9d6c0"
   }
 }

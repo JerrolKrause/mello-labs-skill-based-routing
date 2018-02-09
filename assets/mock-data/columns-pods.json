@@ -1,0 +1,263 @@
+[
+		{
+				"prop": "pod",
+				"label": "POD",
+				"columnType": "string",
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "conformingCnt",
+				"label": "Conforming",
+				"columnType": "number",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "fhaCnt",
+				"label": "FHA",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "vaCnt",
+				"label": "VA",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "vaSuperMaxCnt",
+				"label": "VA Super Max",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "jumboAdvantageCnt",
+				"label": "Jumbo Advantage",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "cqIrrlCnt",
+				"label": "CQ IRRRL",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "homeReadyCnt",
+				"label": "Home Ready",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "homePossibleCnt",
+				"label": "Home Possible",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "fortyIoCnt",
+				"label": "40yr I/O",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+
+		{
+				"prop": "executiveHighBalanceCnt",
+				"label": "Executive High Balance",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "streamlineCnt",
+				"label": "Streamline (FHA)",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "jumboClassicCnt",
+				"label": "Jumbo Classic/Prime",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "ndcCnt",
+				"label": "NDC",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "ndcNonCnt",
+				"label": "Non-NDC",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "tbdCnt",
+				"label": "TBD",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "tbdNonCnt",
+				"label": "Non-TBD",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "miCnt",
+				"label": "MI",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "miNonCnt",
+				"label": "Non-MI",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "purchaseCnt",
+				"label": "Purchase",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "refinanceCnt",
+				"label": "Refinance",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "coopCnt",
+				"label": "COOP",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "coopNonCnt",
+				"label": "Non-COOP",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "tcfCnt",
+				"label": "TCF",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "tcfNonCnt",
+				"label": "Non-TCF",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "203KCnt",
+				"label": "203K",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "203KNonCnt",
+				"label": "Non-203K",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "cemaCnt",
+				"label": "CEMA",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		},
+		{
+				"prop": "cemaNonCnt",
+				"label": "Non-CEMA",
+				"columnType": "string",
+				"width": 70,
+				"canSort": true,
+				"canGroup": true,
+				"canFilter": true
+		}
+]
