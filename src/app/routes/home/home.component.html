@@ -30,9 +30,6 @@
 						<div class="btn-group">
 								<button class="btn btn-sm" [ngClass]="{'btn-primary' : view == 'users', 'btn-secondary' : view != 'users'}" (click)="viewChange('users')">Users</button>
 								<button class="btn btn-sm" [ngClass]="{'btn-primary' : view == 'pods', 'btn-secondary' : view != 'pods'}" (click)="viewChange('pods')">Pods Overview</button>
-								<!--
-								<button class="btn btn-sm" [ngClass]="{'btn-primary' : view == 'products', 'btn-secondary' : view != 'products'}" (click)="viewChange('products')">Users with Products</button>
-								-->
 						</div>
 
 						<!-- Filter datatable -->
@@ -69,7 +66,7 @@
 										</ng-template>
 								</datagrid-column>
 
-								<!-- Custom templates, prop corresponds to column property -->
+								<!-- Capabilities -->
 								<datagrid-column prop="ndc"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
 								<datagrid-column prop="ndcNon"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
 								<datagrid-column prop="tbd"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
@@ -87,7 +84,7 @@
 								<datagrid-column prop="cema"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
 								<datagrid-column prop="cemaNon"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
 
-
+								<!-- Products -->
 								<datagrid-column prop="conforming"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
 								<datagrid-column prop="fha"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>
 								<datagrid-column prop="va"><ng-template let-value="value" let-column="column" let-row="row" datagrid-cell-template><i aria-hidden="true" class="fa fa-check green" *ngIf="value"></i></ng-template></datagrid-column>

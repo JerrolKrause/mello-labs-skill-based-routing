@@ -170,9 +170,11 @@ function createModel() {
 				if (model.hasOwnProperty(key)) {
 						let rand = Math.floor(Math.random() * 10) + 1;
 						if (rand > 8) {
-								model[key] = true;
+							model[key] = true;
 						}
+						model[key + 'Cnt'] = Math.floor(Math.random() * 10);
 				}
 		}
+
 		return model;
 }

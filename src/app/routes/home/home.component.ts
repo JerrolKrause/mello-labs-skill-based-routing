@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, OnDestroy, ChangeDetectorRef, ViewEncapsulation } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Subscription } from "rxjs/Subscription";
 import { ApiService, ApiProps } from '@api';
@@ -12,7 +12,7 @@ import { Datagrid } from '@mello-labs/datagrid';
 	selector: 'home',
 	styleUrls: ['./home.component.scss'],
 	templateUrl: './home.component.html',
-	//encapsulation: ViewEncapsulation.None,
+	encapsulation: ViewEncapsulation.None,
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent implements OnInit, OnDestroy {
@@ -71,8 +71,11 @@ export class HomeComponent implements OnInit, OnDestroy {
 						let podCapabilities: any = {};
 						(<any[]>users.pods[pod]).forEach(user => {
 							for (let rule in user.rules) {
-								if (user.rules.hasOwnProperty(rule) && user.rules[rule]) {
+								
+								if (user.rules.hasOwnProperty(rule) && user.rules[rule] && typeof user.rules[rule] == 'boolean') {
 									podCapabilities[rule] = true;
+								} else {
+									podCapabilities[rule] = user.rules[rule];
 								}
 							}
 						});
@@ -149,6 +152,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 					this.ref.reattach();
 				});
 				break;
+				/*
 			case 'products':
 				this.state = { "filters": [], "sorts": [{ "dir": "asc", "prop": "name" }], "groups": [] };
 				this.rows = this.users;
@@ -157,6 +161,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 					this.ref.reattach();
 				});
 				break;
+				*/
 		}
 	}
 
