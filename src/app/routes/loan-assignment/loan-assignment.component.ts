@@ -69,4 +69,8 @@ export class LoanAssignmentComponent implements OnInit {
 
 	}
 
+	public assignLoans($event) {
+		console.log('Loan assignment', $event);
+	}
+
 }

@@ -3,18 +3,23 @@
 	<div class="card mb-3">
 		<div class="card-header p-2">
 
-			<div class="float-right">
-				<!-- Add User
-				<launch-modal classes="btn btn-primary btn-sm mr-2" modal="UserAddModalComponent" size="xl" (onSuccess)="doSomething($event)">
-					<i class="fa fa-user-plus" aria-hidden="true"></i> Add User
-				</launch-modal>
-				 -->
-				<!-- Refresh users
-				<button class="btn btn-icon btn-sm mr-2" (click)="usersRefresh()" [disabled]="routeData?.state?.loading">
-					<i class="fa fa-refresh"></i>
-				</button>
-				 -->
-			</div>
+				<div class="float-right">
+						<div class="d-inline-block mr-2">
+								<launch-modal classes="btn btn-primary btn-sm mr-2" data="Run automatic loan assignment?" modal="ConfirmationModalComponent" size="md" (onSuccess)="assignLoans($event)">
+										<i class="fa fa-home" aria-hidden="true"></i> Run Loan Assignment
+								</launch-modal>
+						</div>
+						<!-- Add User
+		<launch-modal classes="btn btn-primary btn-sm mr-2" modal="UserAddModalComponent" size="xl" (onSuccess)="doSomething($event)">
+			<i class="fa fa-user-plus" aria-hidden="true"></i> Add User
+		</launch-modal>
+		 -->
+						<!-- Refresh users
+		<button class="btn btn-icon btn-sm mr-2" (click)="usersRefresh()" [disabled]="routeData?.state?.loading">
+			<i class="fa fa-refresh"></i>
+		</button>
+		 -->
+				</div>
 
 			<div class="d-inline-block mr-2">
 				<div class="input-group input-group-sm">
@@ -47,9 +52,7 @@
 				</div>
 			</div>
 
-			<div class="d-inline-block mr-2">
-				<button class="btn btn-primary btn-sm"><i class="fa fa-home" aria-hidden="true"></i> Get Loans</button>
-			</div>
+			
 
 
 			<!-- Pod Change

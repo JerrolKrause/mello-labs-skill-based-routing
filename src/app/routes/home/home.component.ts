@@ -92,10 +92,11 @@ export class HomeComponent implements OnInit, OnDestroy {
 		// Get users and load into store
 		this.api.users.get().subscribe();
 
-		this.api.get('/assets/mock-data/columns-users.json').subscribe((result: any[]) => {
+		this.api.get('./assets/mock-data/columns-users.json').subscribe((result: any[]) => {
 			this.columns = result;
 			this.ref.markForCheck();
 		});
+		
 
 		this.subs = [
 			// User Data
@@ -139,7 +140,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 					this.state.filters = [{ prop: 'pod', operator: 'eq', value: filter }];
 				}
 				this.rows = this.users;
-				this.api.get('/assets/mock-data/columns-users.json').subscribe((result: any[]) => {
+				this.api.get('./assets/mock-data/columns-users.json').subscribe((result: any[]) => {
 					this.columns = result;
 					this.ref.reattach();
 				});
@@ -147,7 +148,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 			case 'pods':
 				this.state = { "filters": [], "sorts": [], "groups": [] };
 				this.rows = this.podRollup;
-				this.api.get('/assets/mock-data/columns-pods.json').subscribe((result: any[]) => {
+				this.api.get('./assets/mock-data/columns-pods.json').subscribe((result: any[]) => {
 					this.columns = result;
 					this.ref.reattach();
 				});

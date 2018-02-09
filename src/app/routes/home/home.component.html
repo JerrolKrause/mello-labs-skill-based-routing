@@ -45,7 +45,7 @@
 
 		<api-state [state]="routeData?.state" [toaster]="true" [showSuccess]="false" *ngIf="routeData?.state">
 				<div style="position: relative;min-height: calc(100vh - 160px);">
-						<datagrid #datagrid *ngIf="rows?.length"
+						<datagrid #datagrid *ngIf="rows?.length && columns?.length"
 											[rows]="rows"
 											[columns]="columns"
 											[state]="state"
